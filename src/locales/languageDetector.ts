@@ -1,5 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getLocales} from 'react-native-localize';
+import dayjs from 'dayjs';
+import 'dayjs/locale/br';
+import 'dayjs/locale/es';
 
 export interface LanguageDetector {
   type:
@@ -21,9 +24,27 @@ const languageDetector: LanguageDetector = {
   detect: async (callback: (language: string) => string): Promise<string> => {
     const storedLanguage = await AsyncStorage.getItem('language');
     if (storedLanguage) {
+      if (storedLanguage === 'en') {
+        dayjs.locale('en');
+      }
+      if (storedLanguage === 'es') {
+        dayjs.locale('es');
+      }
+      if (storedLanguage === 'br') {
+        dayjs.locale('br');
+      }
       return callback(storedLanguage);
     }
     const phoneLanguage = getLocales();
+    if (phoneLanguage[0].languageCode === 'en') {
+      dayjs.locale('en');
+    }
+    if (phoneLanguage[0].languageCode === 'es') {
+      dayjs.locale('es');
+    }
+    if (phoneLanguage[0].languageCode === 'br') {
+      dayjs.locale('br');
+    }
     return callback(phoneLanguage[0].languageCode);
   },
 
