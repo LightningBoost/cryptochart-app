@@ -1,22 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
-import {View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {ApolloProvider} from '@apollo/client';
+import client from './src/services/graphql';
+import Chart from './src/components/Chart';
+import {CombinedDarkTheme} from './src/style/theme';
 
 const App: React.FC = () => {
   return (
-    <PaperProvider>
-      <View />
-    </PaperProvider>
+    <ApolloProvider client={client}>
+      <PaperProvider theme={CombinedDarkTheme}>
+        <NavigationContainer theme={CombinedDarkTheme}>
+          <Chart />
+        </NavigationContainer>
+      </PaperProvider>
+    </ApolloProvider>
   );
 };
 

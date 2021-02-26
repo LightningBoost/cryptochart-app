@@ -10,9 +10,25 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "@react-native-async-storage/async-storage": "^1.14.1",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.9.3",
+    "currency.js": "^2.0.3",
+    "dayjs": "^1.10.4",
+    "deepmerge": "^4.2.2",
+    "graphql": "^15.5.0",
+    "i18next": "^19.9.0",
     "react": "17.0.1",
+    "react-i18next": "^11.8.8",
     "react-native": "0.63.4",
+    "react-native-charts-wrapper": "^0.5.7",
+    "react-native-gesture-handler": "^1.10.2",
+    "react-native-localize": "^2.0.2",
     "react-native-paper": "^4.7.2",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "^2.18.0",
     "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {
@@ -21,6 +37,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.20",
     "@types/react-native": "^0.63.50",
+    "@types/react-native-charts-wrapper": "^0.5.1",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
