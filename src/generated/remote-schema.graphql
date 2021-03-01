@@ -1,0 +1,22 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Candles {
+    close: String!
+    high: String!
+    low: String!
+    open: String!
+    timestamp: Float!
+    volume: String!
+}
+
+type Query {
+    candleOHLC(exchange: Exchanges!, interval: Int!): [Candles!]!
+}
+
+enum Exchanges {
+    binance
+}

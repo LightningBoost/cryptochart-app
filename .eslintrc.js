@@ -25,6 +25,7 @@ module.exports = {
         extensions: ['.tsx'],
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

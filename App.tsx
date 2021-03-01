@@ -1,19 +1,27 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import {ApolloProvider} from '@apollo/client';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
 import client from './src/services/graphql';
-import Chart from './src/components/Chart';
-import {CombinedDarkTheme} from './src/style/theme';
+import {CombinedDarkTheme, CombinedDefaultTheme} from './src/style/theme';
+import DefaultRoutes from './src/routes';
+
+// initialize localized format
+dayjs.extend(localizedFormat);
 
 const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
-      <PaperProvider theme={CombinedDarkTheme}>
-        <NavigationContainer theme={CombinedDarkTheme}>
-          <Chart />
-        </NavigationContainer>
-      </PaperProvider>
+      <SafeAreaProvider>
+        <PaperProvider theme={CombinedDefaultTheme}>
+          <NavigationContainer theme={CombinedDefaultTheme}>
+            <DefaultRoutes />
+          </NavigationContainer>
+        </PaperProvider>
+      </SafeAreaProvider>
     </ApolloProvider>
   );
 };
