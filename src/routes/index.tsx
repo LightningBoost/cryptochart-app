@@ -2,6 +2,7 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 import ChartRoutes from './chart';
 import {CombinedDarkTheme, CombinedDefaultTheme} from '../style/theme';
 import {useTypedSelector} from '../hooks/useTypedSelector';
@@ -14,6 +15,7 @@ type DrawerParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DefaultRoutes: React.FC = () => {
+  const {t} = useTranslation();
   const {dark} = useTypedSelector((state) => state.theme);
   const appTheme = dark ? CombinedDarkTheme : CombinedDefaultTheme;
 
@@ -23,7 +25,11 @@ const DefaultRoutes: React.FC = () => {
         <Drawer.Navigator
           initialRouteName="ChartRoutes"
           drawerContent={(props) => <DrawerComponent {...props} />}>
-          <Drawer.Screen name="ChartRoutes" component={ChartRoutes} />
+          <Drawer.Screen
+            name="ChartRoutes"
+            component={ChartRoutes}
+            options={{title: t('Chart')}}
+          />
         </Drawer.Navigator>
       </NavigationContainer>
     </PaperProvider>

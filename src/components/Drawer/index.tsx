@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   },
   darkMode: {
     alignSelf: 'flex-end',
+    marginRight: 15,
   },
   darkModeButton: {
     padding: 10,
