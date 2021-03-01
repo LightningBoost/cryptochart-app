@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import client from './src/services/graphql';
 import DefaultRoutes from './src/routes';
-import redux from './src/providers/Store';
+import {store, persistor} from './src/providers/Store';
 
 // initialize localized format
 dayjs.extend(localizedFormat);
@@ -16,8 +16,8 @@ const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <SafeAreaProvider>
-        <Provider store={redux().store}>
-          <PersistGate persistor={redux().persistor} loading={null} />
+        <Provider store={store}>
+          <PersistGate persistor={persistor} loading={null} />
           <DefaultRoutes />
         </Provider>
       </SafeAreaProvider>

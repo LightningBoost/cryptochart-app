@@ -3,7 +3,7 @@ export enum ThemeTypes {
 }
 
 export interface IThemeState {
-  readonly theme: 'light' | 'dark';
+  readonly dark: boolean;
 }
 
 export interface IThemeAction {

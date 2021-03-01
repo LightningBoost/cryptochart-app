@@ -26,7 +26,6 @@
     "react-i18next": "^11.8.8",
     "react-native": "0.63.4",
     "react-native-charts-wrapper": "^0.5.7",
-    "react-native-dark-mode-switch": "^0.0.0-alpha.1",
     "react-native-gesture-handler": "^1.10.2",
     "react-native-localize": "^2.0.2",
     "react-native-paper": "^4.7.2",
@@ -38,7 +37,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.1",
@@ -52,6 +52,7 @@
     "@types/jest": "^26.0.20",
     "@types/react-native": "^0.63.50",
     "@types/react-native-charts-wrapper": "^0.5.1",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-redux": "^7.1.16",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.2",

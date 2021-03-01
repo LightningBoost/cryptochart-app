@@ -1,7 +1,7 @@
 import {ThemeTypes, IThemeAction, IThemeState} from './types';
 
 const initialState: IThemeState = {
-  theme: 'light',
+  dark: false,
 };
 
 export const themeReducer = (
@@ -11,7 +11,7 @@ export const themeReducer = (
   switch (action.type) {
     case ThemeTypes.SET_THEME:
       return {
-        theme: action.value.theme,
+        dark: action.value.dark,
       };
     default:
       return state;
