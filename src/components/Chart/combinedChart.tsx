@@ -8,10 +8,13 @@ import {
 } from 'react-native-charts-wrapper';
 import dayjs from 'dayjs';
 import {processColor} from 'react-native';
+import {useTheme} from 'react-native-paper';
 import {ICombinedChartProps} from './interfaces';
 
 const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
   const {t} = useTranslation();
+  const theme = useTheme();
+  console.log(useTheme());
 
   const chartData: CombinedData = {
     candleData: data.candleStick
@@ -54,7 +57,7 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
         scaleY: 1,
         xValue: data.candleStick.length,
         yValue: 0,
-        axisDependency: 'RIGHT' as AxisDependency,
+        axisDependency: 'LEFT' as AxisDependency,
       }
     : undefined;
 
@@ -69,6 +72,8 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
       : undefined,
     labelCount: 5,
     axisMaximum: data.candleStick ? data.candleStick.length + 1 : undefined,
+    textColor: processColor(theme.colors.text),
+    drawGridLines: false,
   };
 
   return (
@@ -77,8 +82,13 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
       data={chartData}
       xAxis={xAxis}
       yAxis={{
-        left: {
+        right: {
           enabled: false,
+        },
+        left: {
+          enabled: true,
+          position: 'INSIDE_CHART',
+          textColor: processColor(theme.colors.text),
         },
       }}
       autoScaleMinMaxEnabled

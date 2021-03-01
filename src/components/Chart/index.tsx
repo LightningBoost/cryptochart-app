@@ -1,10 +1,6 @@
 import React from 'react';
-import {processColor, StyleSheet, View} from 'react-native';
-import {CandleStickChart} from 'react-native-charts-wrapper';
+import {StyleSheet, View} from 'react-native';
 import {gql, useQuery} from '@apollo/client';
-import {useTheme} from 'react-native-paper';
-import dayjs from 'dayjs';
-import {useTranslation} from 'react-i18next';
 import {Candles, Exchanges, QueryCandleOhlcArgs} from '../../generated/graphql';
 import CombinedChart from './combinedChart';
 
@@ -22,7 +18,6 @@ const CHART_CANDLES = gql`
 `;
 
 const Chart: React.FC = () => {
-  const {t} = useTranslation();
   const {loading, error, data} = useQuery<
     {candleOHLC: Candles[]},
     QueryCandleOhlcArgs
