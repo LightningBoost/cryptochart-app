@@ -3,10 +3,13 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ChartRoutes from './chart';
 import {CombinedDarkTheme, CombinedDefaultTheme} from '../style/theme';
 import {useTypedSelector} from '../hooks/useTypedSelector';
 import DrawerComponent from '../components/Drawer';
+
+MaterialCommunityIcons.loadFont();
 
 type DrawerParamList = {
   ChartRoutes: undefined;
@@ -28,7 +31,16 @@ const DefaultRoutes: React.FC = () => {
           <Drawer.Screen
             name="ChartRoutes"
             component={ChartRoutes}
-            options={{title: t('Chart')}}
+            options={{
+              title: t('Chart'),
+              drawerIcon: ({color, size}) => (
+                <MaterialCommunityIcons
+                  name="chart-line"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
           />
         </Drawer.Navigator>
       </NavigationContainer>

@@ -4,7 +4,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import MoonIcon from 'react-native-vector-icons/Entypo';
 import SunIcon from 'react-native-vector-icons/Feather';
 import {useDispatch} from 'react-redux';
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   },
   darkMode: {
     alignSelf: 'flex-end',
+    marginBottom: Platform.OS === 'ios' ? 0 : 25,
     marginRight: 15,
   },
   darkModeButton: {
