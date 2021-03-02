@@ -12,7 +12,6 @@ import {
   QueryTicker24hArgs,
   Ticker24h,
 } from '../../generated/graphql';
-import {ChartContext} from './ChartContext';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import Price from '../../components/Price';
 import {StackParamList} from '../../routes/chart';
@@ -73,16 +72,14 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   }
 
   return (
-    <ChartContext.Provider value={{data, fetchData: refetch, loading, error}}>
-      <SafeAreaView edges={['bottom']}>
-        <FullHeightView style={styles.container}>
-          <View style={styles.pricing}>
-            <Price ticker24h={data.ticker24h} />
-          </View>
-          <Chart />
-        </FullHeightView>
-      </SafeAreaView>
-    </ChartContext.Provider>
+    <SafeAreaView edges={['bottom']}>
+      <FullHeightView style={styles.container}>
+        <View style={styles.pricing}>
+          <Price ticker24h={data.ticker24h} />
+        </View>
+        <Chart data={data} />
+      </FullHeightView>
+    </SafeAreaView>
   );
 };
 

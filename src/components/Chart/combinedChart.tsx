@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import {processColor, Platform} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {Candles} from '../../generated/graphql';
-import {ChartContext} from '../../screens/Chart/ChartContext';
+import {ChartContext} from './chartContext';
 
 const CombinedChart: React.FC = () => {
   const {t} = useTranslation();
