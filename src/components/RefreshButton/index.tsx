@@ -7,7 +7,7 @@ FontAwesome5Icon.loadFont();
 
 interface Props {
   onPress: () => void;
-  size: number;
+  size?: number;
 }
 
 const RefreshButton: React.FC<Props> = ({onPress, size = 18}) => {
