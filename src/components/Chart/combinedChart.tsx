@@ -121,7 +121,6 @@ const CombinedChart: React.FC = () => {
       }}
       autoScaleMinMaxEnabled
       pinchZoom
-      drawBorders
       chartDescription={{text: ''}}
       marker={{
         enabled: true,
