@@ -1,23 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Title, Subheading, Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {ChartContext} from '../../screens/Chart/ChartContext';
 import Currency from '../../utils/currencyjs';
+import {Ticker24h} from '../../generated/graphql';
 
-const Price: React.FC = () => {
+interface Props {
+  ticker24h: Ticker24h;
+}
+
+const Price: React.FC<Props> = ({ticker24h}) => {
   const {t} = useTranslation();
-  const {data} = useContext(ChartContext);
-
-  if (!data) {
-    return null;
-  }
-
-  const ticker24h = data?.ticker24h;
-
-  if (!ticker24h) {
-    return null;
-  }
 
   const last = ticker24h.lastPrice;
   const open = ticker24h.openPrice;

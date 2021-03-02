@@ -77,7 +77,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
       <SafeAreaView edges={['bottom']}>
         <FullHeightView style={styles.container}>
           <View style={styles.pricing}>
-            <Price />
+            <Price ticker24h={data.ticker24h} />
           </View>
           <Chart />
         </FullHeightView>
