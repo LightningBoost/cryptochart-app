@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   AxisDependency,
@@ -9,13 +9,13 @@ import {
 import dayjs from 'dayjs';
 import {processColor, Platform} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {ICombinedChartProps} from './interfaces';
 import {Candles} from '../../generated/graphql';
+import {ChartContext} from '../../screens/Chart/ChartContext';
 
-const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
+const CombinedChart: React.FC = () => {
   const {t} = useTranslation();
   const theme = useTheme();
-  console.log(theme);
+  const {data} = useContext(ChartContext);
 
   const generateMarker = (d: Candles) =>
     `${dayjs(d.timestamp).format('lll')}\n\n${t('Open:')} ${parseFloat(
@@ -27,12 +27,12 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
     ).toFixed(2)}\n${t('Volume:')} ${parseInt(d.volume, 10)} BTC`;
 
   const chartData: CombinedData = {
-    candleData: data.candleStick
+    candleData: data
       ? {
           dataSets: [
             {
               label: 'BTCUSD',
-              values: data.candleStick.map((d) => ({
+              values: data.map((d) => ({
                 shadowH: parseFloat(d.high),
                 shadowL: parseFloat(d.low),
                 open: parseFloat(d.open),
@@ -51,11 +51,11 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
           ],
         }
       : undefined,
-    barData: data.candleStick
+    barData: data
       ? {
           dataSets: [
             {
-              values: data.candleStick.map((d) => ({
+              values: data.map((d) => ({
                 y: parseFloat(d.volume),
                 marker: generateMarker(d),
               })),
@@ -71,11 +71,11 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
       : undefined,
   };
 
-  const zoom = data.candleStick
+  const zoom = data
     ? {
         scaleX: 10,
         scaleY: 1,
-        xValue: data.candleStick.length,
+        xValue: data.length,
         yValue: 0,
         axisDependency: 'LEFT' as AxisDependency,
       }
@@ -83,15 +83,15 @@ const CombinedChart: React.FC<ICombinedChartProps> = ({data}) => {
 
   const xAxis: xAxisInterface = {
     position: 'BOTTOM',
-    valueFormatter: data.candleStick
-      ? data.candleStick?.map((obj) =>
+    valueFormatter: data
+      ? data?.map((obj) =>
           dayjs(obj.timestamp).format(
             dayjs(obj.timestamp).hour() === 0 ? 'DD' : 'LT',
           ),
         )
       : undefined,
     labelCount: 5,
-    axisMaximum: data.candleStick ? data.candleStick.length + 1 : undefined,
+    axisMaximum: data ? data.length + 1 : undefined,
     textColor: processColor(theme.colors.text),
     drawGridLines: false,
   };
