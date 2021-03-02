@@ -7,14 +7,15 @@ FontAwesome5Icon.loadFont();
 
 interface Props {
   onPress: () => void;
+  size: number;
 }
 
-const RefreshButton = ({onPress}: Props) => {
+const RefreshButton: React.FC<Props> = ({onPress, size = 18}) => {
   const theme = useTheme();
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <FontAwesome5Icon name="refresh" size={18} color={theme.colors.text} />
+      <FontAwesome5Icon name="refresh" size={size} color={theme.colors.text} />
     </TouchableOpacity>
   );
 };
