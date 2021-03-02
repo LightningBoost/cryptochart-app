@@ -1,9 +1,14 @@
 import {createContext} from 'react';
 import {ApolloError, ApolloQueryResult} from '@apollo/client';
-import {Candles, QueryCandleOhlcArgs} from '../../generated/graphql';
+import {Candles, QueryCandleOhlcArgs, Ticker24h} from '../../generated/graphql';
 
 export interface ChartContextData {
-  data: Candles[] | undefined;
+  data:
+    | {
+        candleOHLC: Candles[] | undefined;
+        ticker24h: Ticker24h | undefined;
+      }
+    | undefined;
   loading: boolean;
   error: ApolloError | undefined;
   fetchData?: (
@@ -13,7 +18,7 @@ export interface ChartContextData {
 
 export const chartContextDefaultValue: ChartContextData = {
   data: undefined,
-  loading: true,
+  loading: false,
   error: undefined,
 };
 

@@ -15,6 +15,19 @@ type Candles {
 
 type Query {
     candleOHLC(exchange: Exchanges!, interval: Int!): [Candles!]!
+    ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
+}
+
+type Ticker24h {
+    closeTime: Float!
+    highPrice: String!
+    lastPrice: String!
+    lowPrice: String!
+    openPrice: String!
+    openTime: Float!
+    priceChange: String!
+    priceChangePercent: String!
+    volume: String!
 }
 
 enum Exchanges {

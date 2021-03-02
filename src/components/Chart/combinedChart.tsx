@@ -17,6 +17,8 @@ const CombinedChart: React.FC = () => {
   const theme = useTheme();
   const {data} = useContext(ChartContext);
 
+  const candleOHLC = data?.candleOHLC;
+
   const generateMarker = (d: Candles) =>
     `${dayjs(d.timestamp).format('lll')}\n\n${t('Open:')} ${parseFloat(
       d.open,
@@ -27,12 +29,12 @@ const CombinedChart: React.FC = () => {
     ).toFixed(2)}\n${t('Volume:')} ${parseInt(d.volume, 10)} BTC`;
 
   const chartData: CombinedData = {
-    candleData: data
+    candleData: candleOHLC
       ? {
           dataSets: [
             {
               label: 'BTCUSD',
-              values: data.map((d) => ({
+              values: candleOHLC.map((d) => ({
                 shadowH: parseFloat(d.high),
                 shadowL: parseFloat(d.low),
                 open: parseFloat(d.open),
@@ -51,11 +53,11 @@ const CombinedChart: React.FC = () => {
           ],
         }
       : undefined,
-    barData: data
+    barData: candleOHLC
       ? {
           dataSets: [
             {
-              values: data.map((d) => ({
+              values: candleOHLC.map((d) => ({
                 y: parseFloat(d.volume),
                 marker: generateMarker(d),
               })),
@@ -71,11 +73,11 @@ const CombinedChart: React.FC = () => {
       : undefined,
   };
 
-  const zoom = data
+  const zoom = candleOHLC
     ? {
         scaleX: 10,
         scaleY: 1,
-        xValue: data.length,
+        xValue: candleOHLC.length,
         yValue: 0,
         axisDependency: 'LEFT' as AxisDependency,
       }
@@ -83,15 +85,15 @@ const CombinedChart: React.FC = () => {
 
   const xAxis: xAxisInterface = {
     position: 'BOTTOM',
-    valueFormatter: data
-      ? data?.map((obj) =>
+    valueFormatter: candleOHLC
+      ? candleOHLC?.map((obj) =>
           dayjs(obj.timestamp).format(
             dayjs(obj.timestamp).hour() === 0 ? 'DD' : 'LT',
           ),
         )
       : undefined,
     labelCount: 5,
-    axisMaximum: data ? data.length + 1 : undefined,
+    axisMaximum: candleOHLC ? candleOHLC.length + 1 : undefined,
     textColor: processColor(theme.colors.text),
     drawGridLines: false,
   };

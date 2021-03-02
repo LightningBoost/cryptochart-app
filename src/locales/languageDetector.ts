@@ -30,7 +30,7 @@ const languageDetector: LanguageDetector = {
       if (storedLanguage === 'es') {
         dayjs.locale('es');
       }
-      if (storedLanguage === 'br') {
+      if (storedLanguage === 'pt') {
         dayjs.locale('br');
       }
       return callback(storedLanguage);
@@ -42,7 +42,7 @@ const languageDetector: LanguageDetector = {
     if (phoneLanguage[0].languageCode === 'es') {
       dayjs.locale('es');
     }
-    if (phoneLanguage[0].languageCode === 'br') {
+    if (phoneLanguage[0].languageCode === 'pt') {
       dayjs.locale('br');
     }
     return callback(phoneLanguage[0].languageCode);

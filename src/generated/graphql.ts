@@ -19,12 +19,19 @@ export enum Exchanges {
 export type Query = {
   __typename?: 'Query';
   candleOHLC: Array<Candles>;
+  ticker24h: Ticker24h;
 };
 
 
 export type QueryCandleOhlcArgs = {
   exchange: Exchanges;
   interval: Scalars['Int'];
+};
+
+
+export type QueryTicker24hArgs = {
+  exchange: Exchanges;
+  symbol: Scalars['String'];
 };
 
 export type Candles = {
@@ -35,4 +42,17 @@ export type Candles = {
   low: Scalars['String'];
   close: Scalars['String'];
   volume: Scalars['String'];
+};
+
+export type Ticker24h = {
+  __typename?: 'Ticker24h';
+  priceChange: Scalars['String'];
+  priceChangePercent: Scalars['String'];
+  openPrice: Scalars['String'];
+  lastPrice: Scalars['String'];
+  highPrice: Scalars['String'];
+  lowPrice: Scalars['String'];
+  volume: Scalars['String'];
+  openTime: Scalars['Float'];
+  closeTime: Scalars['Float'];
 };
