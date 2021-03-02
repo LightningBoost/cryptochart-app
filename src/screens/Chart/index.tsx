@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {gql, useQuery} from '@apollo/client';
 import {StyleSheet, View} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import Chart from '../../components/Chart';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
@@ -14,6 +15,14 @@ import {
 import {ChartContext} from './ChartContext';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import Price from '../../components/Price';
+import {StackParamList} from '../../routes/chart';
+import RefreshButton from '../../components/RefreshButton';
+
+type ChartScreenNavigationProp = StackNavigationProp<StackParamList, 'Chart'>;
+
+type Props = {
+  navigation: ChartScreenNavigationProp;
+};
 
 const CHART_CANDLES = gql`
   query getData($exchange: Exchanges!, $interval: Int!, $symbol: String!) {
@@ -39,7 +48,7 @@ const CHART_CANDLES = gql`
   }
 `;
 
-const ChartScreen: React.FC = () => {
+const ChartScreen: React.FC<Props> = ({navigation}) => {
   const {loading, error, data, refetch} = useQuery<
     {candleOHLC: Candles[]; ticker24h: Ticker24h},
     QueryCandleOhlcArgs | QueryTicker24hArgs
@@ -47,6 +56,17 @@ const ChartScreen: React.FC = () => {
     variables: {exchange: Exchanges.Binance, interval: 900, symbol: 'BTCUSDT'},
     pollInterval: 60000,
   });
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View style={styles.headerButton}>
+          <RefreshButton onPress={() => refetch()} />
+        </View>
+      ),
+    });
+    // eslint-disable-next-line
+  }, []);
 
   if (!data) {
     return <ActivityIndicator size="large" />;
@@ -69,6 +89,9 @@ const ChartScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 5,
+  },
+  headerButton: {
+    padding: 10,
   },
   pricing: {
     alignSelf: 'flex-end',

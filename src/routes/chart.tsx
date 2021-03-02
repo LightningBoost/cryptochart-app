@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigatorScreenParams} from '@react-navigation/native';
 import ChartScreen from '../screens/Chart';
 
-type StackParamList = {
+export type StackParamList = {
   Chart: NavigatorScreenParams<undefined>;
 };
 
