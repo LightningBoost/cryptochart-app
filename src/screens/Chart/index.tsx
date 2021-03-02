@@ -14,7 +14,7 @@ import {
 } from '../../generated/graphql';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import Price from '../../components/Price';
-import {StackParamList} from '../../routes/chart';
+import {StackParamList} from '../../routes/interfaces';
 import RefreshButton from '../../components/RefreshButton';
 
 type ChartScreenNavigationProp = StackNavigationProp<StackParamList, 'Chart'>;
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   pricing: {
-    alignSelf: 'flex-end',
+    alignSelf: 'flex-start',
     margin: 20,
   },
 });
