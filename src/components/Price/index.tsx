@@ -27,9 +27,10 @@ const Price: React.FC<Props> = ({ticker24h}) => {
           {Currency(last).format()}
         </Title>
         <Subheading
-          style={
-            textStyles({open: parseFloat(open), close: parseFloat(last)}).text
-          }>
+          style={[
+            textStyles({open: parseFloat(open), close: parseFloat(last)}).text,
+            styles.percent,
+          ]}>
           {Currency(priceChangePercent, {symbol: ''}).format()}%
         </Subheading>
       </View>
@@ -50,6 +51,9 @@ const styles = StyleSheet.create({
   },
   innerItems: {
     alignItems: 'flex-end',
+  },
+  percent: {
+    marginTop: -5,
   },
 });
 

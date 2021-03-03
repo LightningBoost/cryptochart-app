@@ -12,6 +12,12 @@ export type Scalars = {
   Float: number;
 };
 
+
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
+
 export enum Exchanges {
   Binance = 'binance'
 }
@@ -25,7 +31,7 @@ export type Query = {
 
 export type QueryCandleOhlcArgs = {
   exchange: Exchanges;
-  interval: Scalars['Int'];
+  interval: Interval;
 };
 
 
@@ -33,6 +39,21 @@ export type QueryTicker24hArgs = {
   exchange: Exchanges;
   symbol: Scalars['String'];
 };
+
+export enum Interval {
+  M1 = 'm1',
+  M3 = 'm3',
+  M5 = 'm5',
+  M15 = 'm15',
+  M30 = 'm30',
+  H1 = 'h1',
+  H2 = 'h2',
+  H4 = 'h4',
+  H6 = 'h6',
+  H8 = 'h8',
+  H12 = 'h12',
+  D1 = 'd1'
+}
 
 export type Candles = {
   __typename?: 'Candles';

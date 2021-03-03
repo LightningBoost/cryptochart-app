@@ -14,7 +14,7 @@ type Candles {
 }
 
 type Query {
-    candleOHLC(exchange: Exchanges!, interval: Int!): [Candles!]!
+    candleOHLC(exchange: Exchanges!, interval: Interval!): [Candles!]!
     ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
 }
 
@@ -30,6 +30,26 @@ type Ticker24h {
     volume: String!
 }
 
+enum CacheControlScope {
+    PRIVATE
+    PUBLIC
+}
+
 enum Exchanges {
     binance
+}
+
+enum Interval {
+    d1
+    h1
+    h12
+    h2
+    h4
+    h6
+    h8
+    m1
+    m15
+    m3
+    m30
+    m5
 }
