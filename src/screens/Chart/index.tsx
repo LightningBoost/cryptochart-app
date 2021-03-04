@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {gql, useQuery} from '@apollo/client';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -22,6 +22,8 @@ import {StackParamList} from '../../routes/interfaces';
 import RefreshButton from '../../components/RefreshButton';
 import OpenHighLowClose from '../../components/OpenHighLowClose';
 import {openBottomSheet} from '../../actions/bottomSheetActions';
+import ChartOptions from '../../components/ChartOptions';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 Entypo.loadFont();
 
@@ -58,6 +60,7 @@ const CHART_CANDLES = gql`
 const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const {pollInterval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch} = useQuery<
     {candleOHLC: Candles[]; ticker24h: Ticker24h},
@@ -68,7 +71,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
       interval: Interval.M15,
       symbol: 'BTCUSDT',
     },
-    pollInterval: 60000,
+    pollInterval,
   });
 
   useEffect(() => {
@@ -85,7 +88,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   const handleOption = () => {
     dispatch(
       openBottomSheet({
-        children: <View />,
+        children: <ChartOptions />,
       }),
     );
   };

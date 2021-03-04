@@ -10,8 +10,8 @@ export enum BottomSheetTypes {
 
 export interface IBottomSheetState {
   readonly children: null | Element;
-  props: ModalizeProps;
-  ref: RefObject<Modalize> | null;
+  readonly props: ModalizeProps;
+  readonly ref: RefObject<Modalize> | null;
 }
 
 export interface IBottomSheetActions {

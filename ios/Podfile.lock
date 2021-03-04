@@ -307,6 +307,8 @@ PODS:
     - SwiftyJSON (= 5.0)
   - RNCMaskedView (0.1.10):
     - React
+  - RNCPicker (1.9.11):
+    - React-Core
   - RNGestureHandler (1.10.2):
     - React-Core
   - RNLocalize (2.0.2):
@@ -375,6 +377,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNCharts (from `../node_modules/react-native-charts-wrapper`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -459,6 +462,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-charts-wrapper"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNLocalize:
@@ -516,6 +521,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: fe58eec522885718d6b297b7b658bf87d7ca557b
   RNCharts: d364ca2085e24edb9ee0390d3fb7209257daa44c
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCPicker: 6780c753e9e674065db90d9c965920516402579d
   RNGestureHandler: e66feb0fda7da74ea6a3094656b3c1efe05f5c07
   RNLocalize: 43f6c30d8e19ad92282ae434d310fb463b31f419
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
