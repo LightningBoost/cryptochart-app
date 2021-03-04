@@ -30,6 +30,7 @@ export const BottomSheet: React.FC = () => {
       disableScrollIfPossible={Platform.OS === 'ios'}
       avoidKeyboardLikeIOS
       modalStyle={styles({theme}).modalStyle}
+      overlayStyle={styles({theme}).overlayStyle}
       scrollViewProps={{keyboardShouldPersistTaps: 'handled'}}
       adjustToContentHeight
       {...props}>
@@ -48,5 +49,10 @@ const styles = ({theme}: IStyles) =>
     },
     modalStyle: {
       backgroundColor: theme.colors.background,
+    },
+    overlayStyle: {
+      backgroundColor: theme.dark
+        ? 'rgba(255, 255, 255, 0.1)'
+        : 'rgba(0, 0, 0, 0.65)',
     },
   });
