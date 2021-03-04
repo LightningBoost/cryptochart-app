@@ -29,11 +29,11 @@ export const BottomSheet: React.FC = () => {
       ref={initialRef}
       disableScrollIfPossible={Platform.OS === 'ios'}
       avoidKeyboardLikeIOS
+      modalStyle={styles({theme}).modalStyle}
       scrollViewProps={{keyboardShouldPersistTaps: 'handled'}}
-      childrenStyle={styles({theme}).childrenStyle}
       adjustToContentHeight
       {...props}>
-      {children}
+      <View style={styles({theme}).childrenStyle}>{children}</View>
     </Modalize>
   );
 };
@@ -42,7 +42,11 @@ const styles = ({theme}: IStyles) =>
   StyleSheet.create({
     childrenStyle: {
       alignItems: 'center',
+      marginHorizontal: 20,
       paddingBottom: 100,
+      marginTop: 20,
+    },
+    modalStyle: {
       backgroundColor: theme.colors.background,
     },
   });
