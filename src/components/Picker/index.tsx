@@ -54,8 +54,8 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     inputIOS: {
       fontSize: 16,
       height: 56,
-      paddingHorizontal: 11,
-      paddingTop: 16,
+      paddingHorizontal: 12,
+      paddingTop: 28,
       color: theme.colors.text,
       textAlignVertical: 'center',
       width: '100%',
@@ -63,9 +63,9 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     },
     inputAndroid: {
       fontSize: 16,
-      height: 56,
-      paddingHorizontal: 11,
-      paddingTop: 26,
+      height: 66,
+      paddingHorizontal: 12,
+      paddingTop: 38,
       color: theme.colors.text,
       textAlignVertical: 'center',
       width: '100%',
