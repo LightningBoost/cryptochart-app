@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react';
 import {gql, useQuery} from '@apollo/client';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import Entypo from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTheme} from 'react-native-paper';
+import {useDispatch} from 'react-redux';
 import Chart from '../../components/Chart';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
@@ -18,6 +21,9 @@ import Price from '../../components/Price';
 import {StackParamList} from '../../routes/interfaces';
 import RefreshButton from '../../components/RefreshButton';
 import OpenHighLowClose from '../../components/OpenHighLowClose';
+import {openBottomSheet} from '../../actions/bottomSheetActions';
+
+Entypo.loadFont();
 
 type ChartScreenNavigationProp = StackNavigationProp<StackParamList, 'Chart'>;
 
@@ -50,6 +56,9 @@ const CHART_CANDLES = gql`
 `;
 
 const ChartScreen: React.FC<Props> = ({navigation}) => {
+  const theme = useTheme();
+  const dispatch = useDispatch();
+
   const {data, refetch} = useQuery<
     {candleOHLC: Candles[]; ticker24h: Ticker24h},
     QueryCandleOhlcArgs | QueryTicker24hArgs
@@ -73,6 +82,14 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     // eslint-disable-next-line
   }, []);
 
+  const handleOption = () => {
+    dispatch(
+      openBottomSheet({
+        children: <View />,
+      }),
+    );
+  };
+
   if (!data) {
     return <ActivityIndicator size="large" />;
   }
@@ -86,7 +103,14 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
             high={data.ticker24h.highPrice}
             low={data.ticker24h.lowPrice}
           />
-          <Price ticker24h={data.ticker24h} />
+          <View style={styles.innerPricing}>
+            <Price ticker24h={data.ticker24h} />
+            <TouchableOpacity
+              style={styles.touchableOptions}
+              onPress={handleOption}>
+              <Entypo name="cog" size={18} color={theme.colors.text} />
+            </TouchableOpacity>
+          </View>
         </View>
         <Chart data={data} />
       </FullHeightView>
@@ -105,6 +129,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     margin: 20,
+  },
+  innerPricing: {
+    flexDirection: 'row',
+  },
+  touchableOptions: {
+    marginLeft: 15,
+    marginRight: -25,
   },
 });
 

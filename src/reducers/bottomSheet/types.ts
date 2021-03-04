@@ -1,5 +1,5 @@
 import {Modalize, ModalizeProps} from 'react-native-modalize';
-import React, {RefObject} from 'react';
+import {RefObject} from 'react';
 
 export enum BottomSheetTypes {
   OPEN_BOTTOMSHEET = '@bottomSheet/OPEN_BOTTOMSHEET',
@@ -9,14 +9,14 @@ export enum BottomSheetTypes {
 }
 
 export interface IBottomSheetState {
-  readonly children: null | React.FC;
+  readonly children: null | Element;
   props: ModalizeProps;
   ref: RefObject<Modalize> | null;
 }
 
 export interface IBottomSheetActions {
   type: BottomSheetTypes;
-  children: null | React.FC;
+  children: null | Element;
   props: ModalizeProps;
   ref: RefObject<Modalize> | null;
 }

@@ -8,6 +8,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import client from './src/services/graphql';
 import DefaultRoutes from './src/routes';
 import {store, persistor} from './src/providers/Store';
+import {BottomSheet} from './src/components/BottomSheet';
 
 // initialize localized format
 dayjs.extend(localizedFormat);
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Provider store={store}>
           <PersistGate persistor={persistor} loading={null} />
           <DefaultRoutes />
+          <BottomSheet />
         </Provider>
       </SafeAreaProvider>
     </ApolloProvider>

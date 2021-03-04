@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    'eslint-comments/no-unlimited-disable': 'off',
   },
   settings: {
     'import/parsers': {

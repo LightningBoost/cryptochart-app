@@ -16,7 +16,7 @@ export const bottomSheetReducer = (
 ): IBottomSheetState => {
   switch (action.type) {
     case BottomSheetTypes.OPEN_BOTTOMSHEET:
-      if (state.ref !== null) {
+      if (state.ref !== null && state.ref.current) {
         state.ref.current.open();
       }
       return {
@@ -25,7 +25,7 @@ export const bottomSheetReducer = (
         props: action.props || {},
       };
     case BottomSheetTypes.CLOSE_BOTTOMSHEET:
-      if (state.ref !== null) {
+      if (state.ref !== null && state.ref.current) {
         state.ref.current.close();
       }
       return {

@@ -4,7 +4,10 @@ import {
   BottomSheetTypes,
 } from '../reducers/bottomSheet/types';
 
-export const openBottomSheet = ({children, props}: IBottomSheetState) => (
+export const openBottomSheet = ({
+  children,
+  props = {},
+}: Partial<IBottomSheetState> & Pick<IBottomSheetState, 'children'>) => (
   dispatch: Dispatch,
 ): void => {
   dispatch({
