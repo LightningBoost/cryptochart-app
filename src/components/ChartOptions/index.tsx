@@ -50,6 +50,7 @@ const ChartOptions: React.FC = () => {
   return (
     <FullWidthView>
       <Picker
+        label={t('Poll interval')}
         items={pollIntervalOptions}
         value={pollInterval}
         onValueChange={(value) => {
