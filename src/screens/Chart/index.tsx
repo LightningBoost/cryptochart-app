@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {gql, useQuery} from '@apollo/client';
+import React, {useEffect} from 'react';
+import {gql, NetworkStatus, useQuery} from '@apollo/client';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import Entypo from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -62,7 +62,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   const dispatch = useDispatch();
   const {pollInterval} = useTypedSelector((state) => state.chart);
 
-  const {data, refetch} = useQuery<
+  const {data, refetch, networkStatus} = useQuery<
     {candleOHLC: Candles[]; ticker24h: Ticker24h},
     QueryCandleOhlcArgs | QueryTicker24hArgs
   >(CHART_CANDLES, {
@@ -72,18 +72,22 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
       symbol: 'BTCUSDT',
     },
     pollInterval,
+    notifyOnNetworkStatusChange: true,
   });
 
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <View style={styles.headerButton}>
-          <RefreshButton onPress={() => refetch()} />
+          <RefreshButton
+            onPress={() => refetch()}
+            spin={networkStatus === NetworkStatus.refetch}
+          />
         </View>
       ),
     });
     // eslint-disable-next-line
-  }, []);
+  }, [networkStatus]);
 
   const handleOption = () => {
     dispatch(
