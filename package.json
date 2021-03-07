@@ -53,6 +53,8 @@
     "@graphql-codegen/typescript-operations": "^1.17.14",
     "@graphql-codegen/typescript-react-apollo": "^2.2.1",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/react-native": "^0.63.50",
@@ -74,21 +76,10 @@
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.65.1",
     "prettier": "^2.2.1",
-    "react-test-renderer": "17.0.1",
+    "react-test-renderer": "^17.0.1",
     "typescript": "^4.2.2"
   },
   "resolutions": {
     "@types/react": "^16"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   }
 }
