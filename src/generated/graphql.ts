@@ -24,7 +24,7 @@ export enum Exchanges {
 
 export type Query = {
   __typename?: 'Query';
-  candleOHLC: Array<Candles>;
+  candleOHLC: CandlesChartQuery;
   ticker24h: Ticker24h;
 };
 
@@ -32,6 +32,7 @@ export type Query = {
 export type QueryCandleOhlcArgs = {
   exchange: Exchanges;
   interval: Interval;
+  symbol: Scalars['String'];
 };
 
 
@@ -63,6 +64,13 @@ export type Candles = {
   low: Scalars['String'];
   close: Scalars['String'];
   volume: Scalars['String'];
+};
+
+export type CandlesChartQuery = {
+  __typename?: 'CandlesChartQuery';
+  data: Array<Candles>;
+  timestamp: Scalars['Float'];
+  symbol: Scalars['String'];
 };
 
 export type Ticker24h = {

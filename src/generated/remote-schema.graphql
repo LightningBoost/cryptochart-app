@@ -13,8 +13,14 @@ type Candles {
     volume: String!
 }
 
+type CandlesChartQuery {
+    data: [Candles!]!
+    symbol: String!
+    timestamp: Float!
+}
+
 type Query {
-    candleOHLC(exchange: Exchanges!, interval: Interval!): [Candles!]!
+    candleOHLC(exchange: Exchanges!, interval: Interval!, symbol: String!): CandlesChartQuery!
     ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
 }
 

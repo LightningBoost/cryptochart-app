@@ -10,6 +10,7 @@ import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
 import {
   Candles,
+  CandlesChartQuery,
   Exchanges,
   Interval,
   QueryCandleOhlcArgs,
@@ -37,13 +38,17 @@ type Props = {
 
 const CHART_CANDLES = gql`
   query getData($exchange: Exchanges!, $interval: Interval!, $symbol: String!) {
-    candleOHLC(exchange: $exchange, interval: $interval) {
+    candleOHLC(exchange: $exchange, interval: $interval, symbol: $symbol) {
       timestamp
-      open
-      high
-      low
-      close
-      volume
+      data {
+        timestamp
+        open
+        high
+        low
+        close
+        volume
+      }
+      symbol
     }
     ticker24h(exchange: $exchange, symbol: $symbol) {
       openTime
@@ -66,7 +71,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   const {pollInterval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch, networkStatus} = useQuery<
-    {candleOHLC: Candles[]; ticker24h: Ticker24h},
+    {candleOHLC: CandlesChartQuery; ticker24h: Ticker24h},
     QueryCandleOhlcArgs | QueryTicker24hArgs
   >(CHART_CANDLES, {
     variables: {
@@ -86,7 +91,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     ) {
       dispatch(
         updateChart({
-          candleDataset: candleChartConversion(data.candleOHLC, 'BTCUSDT'),
+          candleDataset: candleChartConversion(data.candleOHLC.data, 'BTCUSDT'),
         }),
       );
       return;
@@ -95,7 +100,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     if (data) {
       dispatch(
         addChart({
-          candleDataset: candleChartConversion(data.candleOHLC, 'BTCUSDT'),
+          candleDataset: candleChartConversion(data.candleOHLC.data, 'BTCUSDT'),
         }),
       );
     }
@@ -113,6 +118,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
           />
         </View>
       ),
+      title: data && data.candleOHLC.symbol,
     });
     // eslint-disable-next-line
   }, [networkStatus]);
