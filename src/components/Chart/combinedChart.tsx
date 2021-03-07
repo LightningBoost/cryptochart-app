@@ -1,83 +1,30 @@
-import React, {useContext} from 'react';
-import {useTranslation} from 'react-i18next';
+import React from 'react';
 import {
   AxisDependency,
+  CandleStickValue,
   CombinedChart as CChart,
-  CombinedData,
   xAxis as xAxisInterface,
 } from 'react-native-charts-wrapper';
 import dayjs from 'dayjs';
-import {processColor, Platform} from 'react-native';
+import {processColor, Platform, StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {Candles} from '../../generated/graphql';
-import {ChartContext} from './chartContext';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+
+interface IValuesWithTimestamp extends CandleStickValue {
+  timestamp?: number;
+}
 
 const CombinedChart: React.FC = () => {
-  const {t} = useTranslation();
   const theme = useTheme();
-  const {data} = useContext(ChartContext);
+  const {data} = useTypedSelector((state) => state.chart);
 
-  const candleOHLC = data?.candleOHLC;
-
-  const generateMarker = (d: Candles) =>
-    `${dayjs(d.timestamp).format('lll')}\n\n${t('Open:')} ${parseFloat(
-      d.open,
-    ).toFixed(2)}\n${t('Low:')} ${parseFloat(d.low).toFixed(2)}\n${t(
-      'High:',
-    )} ${parseFloat(d.high).toFixed(2)}\n${t('Close:')} ${parseFloat(
-      d.close,
-    ).toFixed(2)}\n${t('Volume:')} ${parseInt(d.volume, 10)} BTC`;
-
-  const chartData: CombinedData = {
-    candleData: candleOHLC
-      ? {
-          dataSets: [
-            {
-              label: 'BTCUSD',
-              values: candleOHLC.map((d) => ({
-                shadowH: parseFloat(d.high),
-                shadowL: parseFloat(d.low),
-                open: parseFloat(d.open),
-                close: parseFloat(d.close),
-                marker: generateMarker(d),
-              })),
-              config: {
-                drawValues: false,
-                increasingColor: processColor('green'),
-                increasingPaintStyle: 'FILL',
-                decreasingColor: processColor('red'),
-                shadowColorSameAsCandle: true,
-                shadowColor: processColor('black'),
-              },
-            },
-          ],
-        }
-      : undefined,
-    barData: candleOHLC
-      ? {
-          dataSets: [
-            {
-              values: candleOHLC.map((d) => ({
-                y: parseFloat(d.volume),
-                marker: generateMarker(d),
-              })),
-              label: t('Volume'),
-              config: {
-                axisDependency: 'RIGHT',
-                drawValues: false,
-                color: processColor(theme.colors.disabled),
-              },
-            },
-          ],
-        }
-      : undefined,
-  };
-
-  const zoom = candleOHLC
+  const zoom = data.candleData?.dataSets
     ? {
         scaleX: 10,
         scaleY: 1,
-        xValue: candleOHLC.length,
+        xValue: data.candleData.dataSets[0].values
+          ? data.candleData.dataSets[0].values.length
+          : 0,
         yValue: 0,
         axisDependency: 'LEFT' as AxisDependency,
       }
@@ -85,23 +32,26 @@ const CombinedChart: React.FC = () => {
 
   const xAxis: xAxisInterface = {
     position: 'BOTTOM',
-    valueFormatter: candleOHLC
-      ? candleOHLC?.map((obj) =>
+    valueFormatter: data.candleData?.dataSets
+      ? data.candleData.dataSets[0].values?.map((obj: IValuesWithTimestamp) =>
           dayjs(obj.timestamp).format(
             dayjs(obj.timestamp).hour() === 0 ? 'DD' : 'LT',
           ),
         )
       : undefined,
     labelCount: 5,
-    axisMaximum: candleOHLC ? candleOHLC.length + 1 : undefined,
+    axisMaximum:
+      data.candleData?.dataSets && data.candleData.dataSets[0].values
+        ? data.candleData.dataSets[0].values.length + 1
+        : undefined,
     textColor: processColor(theme.colors.text),
     drawGridLines: false,
   };
 
   return (
     <CChart
-      style={{flex: 1}}
-      data={chartData}
+      style={styles.chartContainer}
+      data={data}
       xAxis={xAxis}
       yAxis={{
         right: {
@@ -132,5 +82,11 @@ const CombinedChart: React.FC = () => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  chartContainer: {
+    flex: 1,
+  },
+});
 
 export default CombinedChart;

@@ -1,5 +1,15 @@
+import {
+  BarDataset,
+  CandleStickDataset,
+  CombinedData,
+  LineDataset,
+} from 'react-native-charts-wrapper';
+
 export enum ChartTypes {
   UPDATE_PROPS = '@chart/UPDATE_PROPS',
+  ADD_CHART_TO_DATA = '@chart/ADD_CHART_TO_DATA',
+  REMOVE_CHART_FROM_DATA = '@chart/REMOVE_CHART_FROM_DATA',
+  UPDATE_CHART_DATA = '@chart/UPDATE_CHART_DATA',
 }
 
 export enum PollInterval {
@@ -15,9 +25,13 @@ export enum PollInterval {
 
 export interface IChartState {
   readonly pollInterval: PollInterval;
+  readonly data: CombinedData;
 }
 
 export interface IChartActions {
-  type: ChartTypes;
-  props: IChartState;
+  type?: ChartTypes;
+  props?: IChartState;
+  lineDataset?: LineDataset;
+  barDataset?: BarDataset;
+  candleDataset?: CandleStickDataset;
 }

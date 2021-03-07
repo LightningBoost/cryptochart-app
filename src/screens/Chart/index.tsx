@@ -24,6 +24,8 @@ import OpenHighLowClose from '../../components/OpenHighLowClose';
 import {openBottomSheet} from '../../actions/bottomSheetActions';
 import ChartOptions from '../../components/ChartOptions';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {addChart, updateChart} from '../../actions/chartActions';
+import candleChartConversion from '../../utils/candleChartConversion';
 
 Entypo.loadFont();
 
@@ -60,6 +62,7 @@ const CHART_CANDLES = gql`
 const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const chartState = useTypedSelector((state) => state.chart);
   const {pollInterval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch, networkStatus} = useQuery<
@@ -75,6 +78,31 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     notifyOnNetworkStatusChange: true,
   });
 
+  // load chart to redux
+  useEffect(() => {
+    if (
+      data &&
+      chartState.data.candleData?.dataSets?.find((d) => d.label === 'BTCUSDT')
+    ) {
+      dispatch(
+        updateChart({
+          candleDataset: candleChartConversion(data.candleOHLC, 'BTCUSDT'),
+        }),
+      );
+      return;
+    }
+
+    if (data) {
+      dispatch(
+        addChart({
+          candleDataset: candleChartConversion(data.candleOHLC, 'BTCUSDT'),
+        }),
+      );
+    }
+    // eslint-disable-next-line
+  }, [data]);
+
+  // update refresh button
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -89,6 +117,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     // eslint-disable-next-line
   }, [networkStatus]);
 
+  // open bottomsheet with options
   const handleOption = () => {
     dispatch(
       openBottomSheet({
@@ -98,6 +127,10 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   };
 
   if (!data) {
+    return <ActivityIndicator size="large" />;
+  }
+
+  if (chartState.data.candleData?.dataSets?.length === 0) {
     return <ActivityIndicator size="large" />;
   }
 
@@ -119,7 +152,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Chart data={data} />
+        <Chart />
       </FullHeightView>
     </SafeAreaView>
   );

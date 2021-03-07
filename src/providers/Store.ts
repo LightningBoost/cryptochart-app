@@ -9,6 +9,7 @@ import rootReducers from '../reducers';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  blacklist: ['bottomSheet'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

@@ -1,15 +1,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import CombinedChart from './combinedChart';
-import {ChartContext, ChartContextData} from './chartContext';
 
-const Chart: React.FC<ChartContextData> = ({data}) => {
+const Chart: React.FC = () => {
   return (
-    <ChartContext.Provider value={{data}}>
-      <View style={styles.container}>
-        <CombinedChart />
-      </View>
-    </ChartContext.Provider>
+    <View style={styles.container}>
+      <CombinedChart />
+    </View>
   );
 };
 
