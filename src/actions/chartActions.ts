@@ -1,7 +1,11 @@
 import {Dispatch} from 'redux';
-import {IChartState, ChartTypes, IChartActions} from '../reducers/chart/types';
+import {
+  ChartTypes,
+  IChartActions,
+  IChartOptions,
+} from '../reducers/chart/types';
 
-export const updateChartOptions = ({...options}: IChartState) => (
+export const updateChartOptions = ({...options}: IChartOptions) => (
   dispatch: Dispatch,
 ): void => {
   dispatch({

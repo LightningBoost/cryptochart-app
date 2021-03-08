@@ -35,3 +35,7 @@ export interface IChartActions {
   barDataset?: BarDataset;
   candleDataset?: CandleStickDataset;
 }
+
+export interface IChartOptions {
+  pollInterval?: PollInterval;
+}
