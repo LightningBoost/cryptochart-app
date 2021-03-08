@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import FullWidthView from '../View/fullWidth';
