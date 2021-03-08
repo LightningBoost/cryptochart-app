@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Title, Subheading, Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import dayjs from 'dayjs';
 import Currency from '../../utils/currencyjs';
 import {Ticker24h} from '../../generated/graphql';
 
@@ -12,14 +13,17 @@ interface Props {
 const Price: React.FC<Props> = ({ticker24h}) => {
   const {t} = useTranslation();
 
-  const last = ticker24h.lastPrice;
-  const open = ticker24h.openPrice;
-  const {priceChangePercent} = ticker24h;
+  const {
+    priceChangePercent,
+    openPrice: open,
+    lastPrice: last,
+    closeTime,
+  } = ticker24h;
 
   return (
     <View style={styles.container}>
-      <Text>{t('Last 24h change')}</Text>
       <View style={styles.innerItems}>
+        <Text>{t('Last 24h change')}</Text>
         <Title
           style={
             textStyles({open: parseFloat(open), close: parseFloat(last)}).text
@@ -33,6 +37,7 @@ const Price: React.FC<Props> = ({ticker24h}) => {
           ]}>
           {Currency(priceChangePercent, {symbol: ''}).format()}%
         </Subheading>
+        <Text>{dayjs(closeTime).format('lll')}</Text>
       </View>
     </View>
   );
