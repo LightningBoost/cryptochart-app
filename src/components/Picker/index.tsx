@@ -27,6 +27,7 @@ const Picker: React.FC<IProps> = ({
     <TextInput
       label={label}
       value={String(value)}
+      style={inputStyle.input}
       render={() => (
         <RNPickerSelect
           items={items}
@@ -54,7 +55,7 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     inputIOS: {
       fontSize: 16,
       height: 56,
-      paddingHorizontal: 12,
+      paddingHorizontal: 0,
       paddingTop: 28,
       color: theme.colors.text,
       textAlignVertical: 'center',
@@ -64,7 +65,7 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     inputAndroid: {
       fontSize: 16,
       height: 66,
-      paddingHorizontal: 12,
+      paddingHorizontal: 0,
       paddingTop: 38,
       color: theme.colors.text,
       textAlignVertical: 'center',
@@ -72,5 +73,11 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
       paddingRight: 30, // to ensure the text is never behind the icon
     },
   });
+
+const inputStyle = StyleSheet.create({
+  input: {
+    paddingHorizontal: 0,
+  },
+});
 
 export default Picker;
