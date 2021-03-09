@@ -9,11 +9,11 @@ import {
   mountBottomSheet,
 } from '../../actions/bottomSheetActions';
 
-interface IBackdrop {
+interface IProps {
   active: boolean;
 }
 
-const Backdrop: React.FC<IBackdrop> = ({active}) => {
+const Backdrop: React.FC<IProps> = ({active}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -29,14 +29,14 @@ const Backdrop: React.FC<IBackdrop> = ({active}) => {
   ) : null;
 };
 
-const BottomSheetHandle = () => {
+const BottomSheetHandle: React.FC<IProps> = ({active}) => {
   const theme = useTheme();
 
-  return (
+  return active ? (
     <View style={styles({theme}).handle}>
       <View style={styles({theme}).indicator} />
     </View>
-  );
+  ) : null;
 };
 
 const BottomSheet: React.FC = () => {
@@ -65,7 +65,7 @@ const BottomSheet: React.FC = () => {
     <BS
       ref={initialRef}
       index={-1}
-      handleComponent={BottomSheetHandle}
+      handleComponent={() => BottomSheetHandle({active: !!children})}
       backdropComponent={() => Backdrop({active: !!children})}
       snapPoints={snapPoints}
       onChange={handleChange}
