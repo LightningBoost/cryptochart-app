@@ -128,6 +128,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
     dispatch(
       openBottomSheet({
         children: <ChartOptions />,
+        snapTo: 1,
       }),
     );
   };

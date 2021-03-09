@@ -18,5 +18,6 @@ export interface IBottomSheetActions {
   type: BottomSheetTypes;
   children: null | Element;
   props: Partial<BottomSheetProps>;
+  snapTo: number;
   ref: RefObject<BottomSheet> | null;
 }

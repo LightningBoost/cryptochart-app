@@ -1,4 +1,5 @@
 import {Dispatch} from 'redux';
+import BottomSheet from '@gorhom/bottom-sheet';
 import {
   IBottomSheetState,
   BottomSheetTypes,
@@ -7,13 +8,16 @@ import {
 export const openBottomSheet = ({
   children,
   props = {},
-}: Partial<IBottomSheetState> & Pick<IBottomSheetState, 'children'>) => (
+  snapTo,
+}: Partial<IBottomSheetState> &
+  Pick<IBottomSheetState, 'children'> & {snapTo: 1 | 2 | 3}) => (
   dispatch: Dispatch,
 ): void => {
   dispatch({
     type: BottomSheetTypes.OPEN_BOTTOMSHEET,
     children,
     props,
+    snapTo,
   });
 };
 

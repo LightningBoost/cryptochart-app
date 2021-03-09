@@ -17,7 +17,7 @@ export const bottomSheetReducer = (
   switch (action.type) {
     case BottomSheetTypes.OPEN_BOTTOMSHEET:
       if (state.ref !== null && state.ref.current) {
-        state.ref.current.expand();
+        state.ref.current.snapTo(action.snapTo);
       }
       return {
         ...state,
