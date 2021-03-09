@@ -17,9 +17,17 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 
+const middlewares = [thunk];
+
+if (__DEV__) {
+  // eslint-disable-next-line
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+
 const store = createStore(
   persistedReducer,
-  composeWithDevTools(applyMiddleware(thunk)),
+  composeWithDevTools(applyMiddleware(...middlewares)),
 );
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

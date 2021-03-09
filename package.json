@@ -28,6 +28,7 @@
     "react-i18next": "^11.8.8",
     "react-native": "0.63.4",
     "react-native-charts-wrapper": "^0.5.7",
+    "react-native-flipper": "^0.79.1",
     "react-native-gesture-handler": "^1.10.2",
     "react-native-localize": "^2.0.2",
     "react-native-modalize": "^2.0.8",
@@ -41,6 +42,7 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-flipper": "^1.4.2",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
   },
