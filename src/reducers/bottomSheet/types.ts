@@ -1,4 +1,4 @@
-import {Modalize, ModalizeProps} from 'react-native-modalize';
+import BottomSheet, {BottomSheetProps} from '@gorhom/bottom-sheet';
 import {RefObject} from 'react';
 
 export enum BottomSheetTypes {
@@ -10,13 +10,13 @@ export enum BottomSheetTypes {
 
 export interface IBottomSheetState {
   readonly children: null | Element;
-  readonly props: ModalizeProps;
-  readonly ref: RefObject<Modalize> | null;
+  readonly props: Partial<BottomSheetProps>;
+  readonly ref: RefObject<BottomSheet> | null;
 }
 
 export interface IBottomSheetActions {
   type: BottomSheetTypes;
   children: null | Element;
-  props: ModalizeProps;
-  ref: RefObject<Modalize> | null;
+  props: Partial<BottomSheetProps>;
+  ref: RefObject<BottomSheet> | null;
 }
