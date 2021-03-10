@@ -28,6 +28,7 @@ const Picker: React.FC<IProps> = ({
     <TextInput
       label={label}
       value={String(value)}
+      style={pickerStyles(theme).inputContainer}
       render={() => (
         <RNPickerSelect
           items={items}
@@ -51,6 +52,9 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
       justifyContent: 'center',
       height: '100%',
       marginRight: 5,
+    },
+    inputContainer: {
+      width: '100%',
     },
     inputIOS: {
       fontSize: 16,
