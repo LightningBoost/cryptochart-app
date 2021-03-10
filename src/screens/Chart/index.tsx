@@ -9,7 +9,6 @@ import Chart from '../../components/Chart';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
 import {
-  Candles,
   CandlesChartQuery,
   Exchanges,
   Interval,
