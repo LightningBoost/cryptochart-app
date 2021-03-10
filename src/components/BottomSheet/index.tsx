@@ -135,6 +135,7 @@ const styles = ({theme}: {theme: ReactNativePaper.Theme}) =>
     },
     innerChildren: {
       alignSelf: 'center',
+      flex: 1,
       width: '90%',
     },
   });
