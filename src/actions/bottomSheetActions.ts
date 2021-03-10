@@ -1,5 +1,4 @@
 import {Dispatch} from 'redux';
-import BottomSheet from '@gorhom/bottom-sheet';
 import {
   IBottomSheetState,
   BottomSheetTypes,
