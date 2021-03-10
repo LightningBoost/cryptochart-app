@@ -1,62 +1,47 @@
-import React from 'react';
-import {useTranslation} from 'react-i18next';
-import {useDispatch} from 'react-redux';
-import FullWidthView from '../View/fullWidth';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
-import Picker from '../Picker';
-import {PollInterval} from '../../reducers/chart/types';
-import {updateChartOptions} from '../../actions/chartActions';
+import React, {useMemo} from 'react';
+import {
+  createStackNavigator,
+  HeaderBackButton,
+  StackNavigationOptions,
+  TransitionPresets,
+} from '@react-navigation/stack';
+import {TouchableOpacity} from 'react-native';
+import OptionsScreen from './optionsScreen';
+
+const Stack = createStackNavigator();
 
 const ChartOptions: React.FC = () => {
-  const {t} = useTranslation();
-  const {pollInterval} = useTypedSelector((state) => state.chart);
-  const dispatch = useDispatch();
-  const pollIntervalOptions = [
-    {
-      label: t('1 minute'),
-      value: PollInterval.M1,
-    },
-    {
-      label: t('5 minutes'),
-      value: PollInterval.M5,
-    },
-    {
-      label: t('10 minutes'),
-      value: PollInterval.M10,
-    },
-    {
-      label: t('15 minutes'),
-      value: PollInterval.M15,
-    },
-    {
-      label: t('30 minutes'),
-      value: PollInterval.M30,
-    },
-    {
-      label: t('1 hour'),
-      value: PollInterval.H1,
-    },
-    {
-      label: t('6 hours'),
-      value: PollInterval.H6,
-    },
-    {
-      label: t('12 hours'),
-      value: PollInterval.H12,
-    },
-  ];
+  const screenOptions = useMemo<StackNavigationOptions>(
+    () => ({
+      ...TransitionPresets.SlideFromRightIOS,
+      headerShown: true,
+      safeAreaInsets: {top: 0},
+      headerLeft: ({onPress, ...props}) => (
+        <TouchableOpacity onPress={onPress}>
+          <HeaderBackButton {...props} />
+        </TouchableOpacity>
+      ),
+      cardStyle: {
+        backgroundColor: 'white',
+        overflow: 'visible',
+      },
+    }),
+    [],
+  );
+
+  const optionsScreenOptions = useMemo<StackNavigationOptions>(
+    () => ({headerLeft: () => null, headerShown: false}),
+    [],
+  );
 
   return (
-    <FullWidthView>
-      <Picker
-        label={t('Poll interval')}
-        items={pollIntervalOptions}
-        value={pollInterval}
-        onValueChange={(value) => {
-          dispatch(updateChartOptions({pollInterval: value as PollInterval}));
-        }}
+    <Stack.Navigator screenOptions={screenOptions} headerMode="screen">
+      <Stack.Screen
+        name="OptionsScreen"
+        component={OptionsScreen}
+        options={optionsScreenOptions}
       />
-    </FullWidthView>
+    </Stack.Navigator>
   );
 };
 

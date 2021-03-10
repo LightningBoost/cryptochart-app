@@ -44,6 +44,8 @@ const DefaultRoutes: React.FC = () => {
             }}
           />
         </Drawer.Navigator>
+      </NavigationContainer>
+      <NavigationContainer theme={appTheme}>
         <BottomSheet />
       </NavigationContainer>
     </PaperProvider>
