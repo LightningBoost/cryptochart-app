@@ -54,6 +54,7 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
       marginRight: 5,
     },
     inputContainer: {
+      backgroundColor: theme.colors.background,
       width: '100%',
     },
     inputIOS: {
