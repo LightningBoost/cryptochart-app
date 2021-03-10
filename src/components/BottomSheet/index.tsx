@@ -2,7 +2,12 @@ import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import BS from '@gorhom/bottom-sheet';
 import {useDispatch} from 'react-redux';
 import {useTheme} from 'react-native-paper';
-import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
+import {
+  Animated,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {
   closeBottomSheet,
@@ -16,6 +21,27 @@ interface IProps {
 const Backdrop: React.FC<IProps> = ({active}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const opacityValue = new Animated.Value(0);
+
+  const backgroundColorFn = () => {
+    opacityValue.setValue(0);
+
+    Animated.timing(opacityValue, {
+      toValue: 1,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    backgroundColorFn();
+    // eslint-disable-next-line
+  }, [active]);
+
+  const opacity = opacityValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 0.8],
+  });
 
   const handleClose = useCallback(() => {
     dispatch(closeBottomSheet());
@@ -24,7 +50,7 @@ const Backdrop: React.FC<IProps> = ({active}) => {
 
   return active ? (
     <TouchableWithoutFeedback onPress={handleClose}>
-      <View style={styles({theme}).backdrop} />
+      <Animated.View style={[styles({theme}).backdrop, {opacity}]} />
     </TouchableWithoutFeedback>
   ) : null;
 };
@@ -82,7 +108,6 @@ const styles = ({theme}: {theme: ReactNativePaper.Theme}) =>
     backdrop: {
       ...StyleSheet.absoluteFillObject,
       backgroundColor: 'black',
-      opacity: 0.8,
     },
     container: {
       backgroundColor: theme.colors.background,
