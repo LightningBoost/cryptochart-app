@@ -1,8 +1,9 @@
 import React from 'react';
 import RNPickerSelect, {Item} from 'react-native-picker-select';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {TextInput, useTheme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
+import TextInput from '../TextInput';
 
 Entypo.loadFont();
 
@@ -27,7 +28,6 @@ const Picker: React.FC<IProps> = ({
     <TextInput
       label={label}
       value={String(value)}
-      style={inputStyle.input}
       render={() => (
         <RNPickerSelect
           items={items}
@@ -55,7 +55,7 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     inputIOS: {
       fontSize: 16,
       height: 56,
-      paddingHorizontal: 0,
+      paddingHorizontal: 12,
       paddingTop: 28,
       color: theme.colors.text,
       textAlignVertical: 'center',
@@ -65,7 +65,7 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
     inputAndroid: {
       fontSize: 16,
       height: 66,
-      paddingHorizontal: 0,
+      paddingHorizontal: 12,
       paddingTop: 38,
       color: theme.colors.text,
       textAlignVertical: 'center',
@@ -73,11 +73,5 @@ const pickerStyles = (theme: ReactNativePaper.Theme) =>
       paddingRight: 30, // to ensure the text is never behind the icon
     },
   });
-
-const inputStyle = StyleSheet.create({
-  input: {
-    paddingHorizontal: 0,
-  },
-});
 
 export default Picker;
