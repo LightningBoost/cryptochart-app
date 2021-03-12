@@ -56,7 +56,6 @@ const CHART_CANDLES = gql`
             shadowL
             open
             close
-            marker
             volume
           }
           label

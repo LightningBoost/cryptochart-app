@@ -9,12 +9,9 @@ import {CombinedDarkTheme, CombinedDefaultTheme} from '../style/theme';
 import {useTypedSelector} from '../hooks/useTypedSelector';
 import DrawerComponent from '../components/Drawer';
 import BottomSheet from '../components/BottomSheet';
+import {DrawerParamList} from './interfaces';
 
 MaterialCommunityIcons.loadFont();
-
-type DrawerParamList = {
-  ChartRoutes: undefined;
-};
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
