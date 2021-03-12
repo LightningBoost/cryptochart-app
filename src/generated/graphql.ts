@@ -22,17 +22,24 @@ export enum Exchanges {
   Binance = 'binance'
 }
 
+export enum ChartQuery {
+  Candlestick = 'CANDLESTICK',
+  Volume = 'VOLUME',
+  Ema = 'EMA'
+}
+
 export type Query = {
   __typename?: 'Query';
-  candleOHLC: CandlesChartQuery;
+  chart: CombinedData;
   ticker24h: Ticker24h;
 };
 
 
-export type QueryCandleOhlcArgs = {
+export type QueryChartArgs = {
   exchange: Exchanges;
   interval: Interval;
   symbol: Scalars['String'];
+  queryData: Array<ChartQuery>;
 };
 
 
@@ -56,6 +63,31 @@ export enum Interval {
   D1 = 'd1'
 }
 
+export enum AxisDependency {
+  Left = 'LEFT',
+  Right = 'RIGHT'
+}
+
+export type CommonDatasetConfig = {
+  __typename?: 'CommonDatasetConfig';
+  drawValues: Scalars['Boolean'];
+  axisDependency: AxisDependency;
+  shadowWidth?: Maybe<Scalars['Float']>;
+  shadowColor?: Maybe<Scalars['String']>;
+  shadowColorSameAsCandle?: Maybe<Scalars['Boolean']>;
+  decreasingColor?: Maybe<Scalars['String']>;
+  increasingColor?: Maybe<Scalars['String']>;
+  decreasingPaintStyle?: Maybe<CandleStickPaintStyle>;
+  increasingPaintStyle?: Maybe<CandleStickPaintStyle>;
+};
+
+export type Values = {
+  __typename?: 'Values';
+  x?: Maybe<Scalars['Float']>;
+  y?: Maybe<Scalars['Float']>;
+  marker: Scalars['String'];
+};
+
 export type Candles = {
   __typename?: 'Candles';
   timestamp: Scalars['Float'];
@@ -66,11 +98,78 @@ export type Candles = {
   volume: Scalars['String'];
 };
 
-export type CandlesChartQuery = {
-  __typename?: 'CandlesChartQuery';
-  data: Array<Candles>;
+export type DataConfig = {
+  __typename?: 'DataConfig';
+  mode?: Maybe<ConfigMode>;
+  drawCircles?: Maybe<Scalars['Boolean']>;
+  color: Scalars['String'];
+  barWidth?: Maybe<Scalars['Float']>;
+};
+
+export type CombinedData = {
+  __typename?: 'CombinedData';
+  lineData?: Maybe<LineData>;
+  barData?: Maybe<BarData>;
+  candleData?: Maybe<CandleStickData>;
+};
+
+export enum ConfigMode {
+  Linear = 'LINEAR',
+  Stepped = 'STEPPED',
+  CubicBezier = 'CUBIC_BEZIER',
+  HorizontalBezier = 'HORIZONTAL_BEZIER'
+}
+
+export type LineDatasets = {
+  __typename?: 'LineDatasets';
+  values: Array<Values>;
+  config: DataConfig;
+};
+
+export type LineData = {
+  __typename?: 'LineData';
+  dataSets: Array<LineDatasets>;
+};
+
+export enum CandleStickPaintStyle {
+  Fill = 'FILL',
+  Stroke = 'STROKE',
+  FillAndStroke = 'FILL_AND_STROKE'
+}
+
+export type CandleStickValue = {
+  __typename?: 'CandleStickValue';
+  x?: Maybe<Scalars['Float']>;
   timestamp: Scalars['Float'];
-  symbol: Scalars['String'];
+  shadowH: Scalars['Float'];
+  shadowL: Scalars['Float'];
+  open: Scalars['Float'];
+  close: Scalars['Float'];
+  marker: Scalars['String'];
+  volume: Scalars['String'];
+};
+
+export type CandleStickDataset = {
+  __typename?: 'CandleStickDataset';
+  values: Array<CandleStickValue>;
+  label: Scalars['String'];
+  config: CommonDatasetConfig;
+};
+
+export type CandleStickData = {
+  __typename?: 'CandleStickData';
+  dataSets: Array<CandleStickDataset>;
+};
+
+export type BarDatasets = {
+  __typename?: 'BarDatasets';
+  values: Array<Values>;
+};
+
+export type BarData = {
+  __typename?: 'BarData';
+  dataSets: Array<BarDatasets>;
+  config?: Maybe<DataConfig>;
 };
 
 export type Ticker24h = {

@@ -4,6 +4,36 @@ schema {
     query: Query
 }
 
+type BarData {
+    config: DataConfig
+    dataSets: [BarDatasets!]!
+}
+
+type BarDatasets {
+    values: [Values!]!
+}
+
+type CandleStickData {
+    dataSets: [CandleStickDataset!]!
+}
+
+type CandleStickDataset {
+    config: CommonDatasetConfig!
+    label: String!
+    values: [CandleStickValue!]!
+}
+
+type CandleStickValue {
+    close: Float!
+    marker: String!
+    open: Float!
+    shadowH: Float!
+    shadowL: Float!
+    timestamp: Float!
+    volume: String!
+    x: Float
+}
+
 type Candles {
     close: String!
     high: String!
@@ -13,14 +43,42 @@ type Candles {
     volume: String!
 }
 
-type CandlesChartQuery {
-    data: [Candles!]!
-    symbol: String!
-    timestamp: Float!
+type CombinedData {
+    barData: BarData
+    candleData: CandleStickData
+    lineData: LineData
+}
+
+type CommonDatasetConfig {
+    axisDependency: AxisDependency!
+    decreasingColor: String
+    decreasingPaintStyle: CandleStickPaintStyle
+    drawValues: Boolean!
+    increasingColor: String
+    increasingPaintStyle: CandleStickPaintStyle
+    shadowColor: String
+    shadowColorSameAsCandle: Boolean
+    shadowWidth: Float
+}
+
+type DataConfig {
+    barWidth: Float
+    color: String!
+    drawCircles: Boolean
+    mode: ConfigMode
+}
+
+type LineData {
+    dataSets: [LineDatasets!]!
+}
+
+type LineDatasets {
+    config: DataConfig!
+    values: [Values!]!
 }
 
 type Query {
-    candleOHLC(exchange: Exchanges!, interval: Interval!, symbol: String!): CandlesChartQuery!
+    chart(exchange: Exchanges!, interval: Interval!, queryData: [ChartQuery!]!, symbol: String!): CombinedData!
     ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
 }
 
@@ -36,9 +94,39 @@ type Ticker24h {
     volume: String!
 }
 
+type Values {
+    marker: String!
+    x: Float
+    y: Float
+}
+
+enum AxisDependency {
+    LEFT
+    RIGHT
+}
+
 enum CacheControlScope {
     PRIVATE
     PUBLIC
+}
+
+enum CandleStickPaintStyle {
+    FILL
+    FILL_AND_STROKE
+    STROKE
+}
+
+enum ChartQuery {
+    CANDLESTICK
+    EMA
+    VOLUME
+}
+
+enum ConfigMode {
+    CUBIC_BEZIER
+    HORIZONTAL_BEZIER
+    LINEAR
+    STEPPED
 }
 
 enum Exchanges {

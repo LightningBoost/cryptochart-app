@@ -9,10 +9,11 @@ import Chart from '../../components/Chart';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
 import {
-  CandlesChartQuery,
+  ChartQuery,
+  CombinedData,
   Exchanges,
   Interval,
-  QueryCandleOhlcArgs,
+  QueryChartArgs,
   QueryTicker24hArgs,
   Ticker24h,
 } from '../../generated/graphql';
@@ -24,8 +25,7 @@ import OpenHighLowClose from '../../components/OpenHighLowClose';
 import {openBottomSheet} from '../../actions/bottomSheetActions';
 import ChartOptions from '../../components/ChartOptions';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {addChart, updateChart} from '../../actions/chartActions';
-import candleChartConversion from '../../utils/candleChartConversion';
+import chartConversion from '../../utils/chartConversion';
 
 Entypo.loadFont();
 
@@ -36,18 +36,43 @@ type Props = {
 };
 
 const CHART_CANDLES = gql`
-  query getData($exchange: Exchanges!, $interval: Interval!, $symbol: String!) {
-    candleOHLC(exchange: $exchange, interval: $interval, symbol: $symbol) {
-      timestamp
-      data {
-        timestamp
-        open
-        high
-        low
-        close
-        volume
+  query getData(
+    $exchange: Exchanges!
+    $interval: Interval!
+    $symbol: String!
+    $queryData: [ChartQuery!]!
+  ) {
+    chart(
+      exchange: $exchange
+      interval: $interval
+      symbol: $symbol
+      queryData: $queryData
+    ) {
+      candleData {
+        dataSets {
+          values {
+            timestamp
+            shadowH
+            shadowL
+            open
+            close
+            marker
+            volume
+          }
+          label
+          config {
+            drawValues
+            shadowWidth
+            shadowColor
+            shadowColorSameAsCandle
+            decreasingColor
+            increasingColor
+            decreasingPaintStyle
+            increasingPaintStyle
+            axisDependency
+          }
+        }
       }
-      symbol
     }
     ticker24h(exchange: $exchange, symbol: $symbol) {
       openTime
@@ -66,45 +91,21 @@ const CHART_CANDLES = gql`
 const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const chartState = useTypedSelector((state) => state.chart);
   const {pollInterval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch, networkStatus} = useQuery<
-    {candleOHLC: CandlesChartQuery; ticker24h: Ticker24h},
-    QueryCandleOhlcArgs | QueryTicker24hArgs
+    {chart: CombinedData; ticker24h: Ticker24h},
+    QueryChartArgs & QueryTicker24hArgs
   >(CHART_CANDLES, {
     variables: {
       exchange: Exchanges.Binance,
       interval: Interval.M15,
       symbol: 'BTCUSDT',
+      queryData: [ChartQuery.Candlestick],
     },
     pollInterval,
     notifyOnNetworkStatusChange: true,
   });
-
-  // load chart to redux
-  useEffect(() => {
-    if (
-      data &&
-      chartState.data.candleData?.dataSets?.find((d) => d.label === 'BTCUSDT')
-    ) {
-      dispatch(
-        updateChart({
-          candleDataset: candleChartConversion(data.candleOHLC.data, 'BTCUSDT'),
-        }),
-      );
-      return;
-    }
-
-    if (data) {
-      dispatch(
-        addChart({
-          candleDataset: candleChartConversion(data.candleOHLC.data, 'BTCUSDT'),
-        }),
-      );
-    }
-    // eslint-disable-next-line
-  }, [data]);
 
   // update refresh button
   useEffect(() => {
@@ -117,7 +118,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
           />
         </View>
       ),
-      title: data && data.candleOHLC.symbol,
+      title: data && data.chart.candleData?.dataSets[0].label,
     });
     // eslint-disable-next-line
   }, [networkStatus]);
@@ -133,10 +134,6 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   };
 
   if (!data) {
-    return <ActivityIndicator size="large" />;
-  }
-
-  if (chartState.data.candleData?.dataSets?.length === 0) {
     return <ActivityIndicator size="large" />;
   }
 
@@ -158,7 +155,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Chart />
+        <Chart data={chartConversion(data.chart)} />
       </FullHeightView>
     </SafeAreaView>
   );

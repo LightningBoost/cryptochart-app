@@ -3,20 +3,23 @@ import {
   AxisDependency,
   CandleStickValue,
   CombinedChart as CChart,
+  CombinedData,
   xAxis as xAxisInterface,
 } from 'react-native-charts-wrapper';
 import dayjs from 'dayjs';
 import {processColor, Platform, StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 interface IValuesWithTimestamp extends CandleStickValue {
   timestamp?: number;
 }
 
-const CombinedChart: React.FC = () => {
+interface IProps {
+  data: CombinedData;
+}
+
+const CombinedChart: React.FC<IProps> = ({data}) => {
   const theme = useTheme();
-  const {data} = useTypedSelector((state) => state.chart);
 
   const zoom = data.candleData?.dataSets
     ? {
