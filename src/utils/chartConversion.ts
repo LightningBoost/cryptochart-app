@@ -8,6 +8,7 @@ import {
 } from 'react-native-charts-wrapper';
 import {processColor} from 'react-native';
 import {CombinedData} from '../generated/graphql';
+import generateMarker from './candleChartConversion';
 
 const chartConversion = (data: CombinedData): CDChart => {
   return {
@@ -42,7 +43,7 @@ const chartConversion = (data: CombinedData): CDChart => {
           shadowH: v.shadowH,
           shadowL: v.shadowL,
           close: v.close,
-          marker: v.marker || undefined,
+          marker: generateMarker(v) || undefined,
         })) as CandleStickValue[],
         label: d.label,
         config: {
