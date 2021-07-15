@@ -11,16 +11,16 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1D8B6BBE9E1D911D437D4FC9 /* libPods-CryptoChart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A162B9924DAC04C8B73812CB /* libPods-CryptoChart-tvOSTests.a */; };
+		2B99C0260CBC122CDE60B674 /* libPods-CryptoChart-CryptoChartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EDF04919EE48C2DFFF50B7 /* libPods-CryptoChart-CryptoChartTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* CryptoChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CryptoChartTests.m */; };
-		43F1FCE2A3B7FB86FB0DA509 /* libPods-CryptoChart-CryptoChartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C1B94AF6D037FD363A2C85B /* libPods-CryptoChart-CryptoChartTests.a */; };
-		45F4B0A758F9A7597C9A6BFC /* libPods-CryptoChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 306305313E3F37AC0C91487D /* libPods-CryptoChart.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BB94670D56C71F2E872690DA /* libPods-CryptoChart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31845EFED8158A82BF17DDA2 /* libPods-CryptoChart-tvOS.a */; };
 		BF0D2E4A25E8437C000AA8C6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0D2E4925E8437C000AA8C6 /* File.swift */; };
-		C34D442019935B7419843186 /* libPods-CryptoChart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0705218E33691ABC3565B397 /* libPods-CryptoChart-tvOSTests.a */; };
+		C5589A520096086F2BBF93EE /* libPods-CryptoChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D0CE5C8E9C3A0464224E9 /* libPods-CryptoChart.a */; };
+		FD06E7FFFE44BEE6ECEB32BE /* libPods-CryptoChart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B97EFBE6A6BF18DB60D1523F /* libPods-CryptoChart-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,29 +45,29 @@
 		00E356EE1AD99517003FC87E /* CryptoChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CryptoChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CryptoChartTests.m; sourceTree = "<group>"; };
-		0705218E33691ABC3565B397 /* libPods-CryptoChart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		070D0CE5C8E9C3A0464224E9 /* libPods-CryptoChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* CryptoChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CryptoChart/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CryptoChart/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CryptoChart/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CryptoChart/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CryptoChart/main.m; sourceTree = "<group>"; };
-		1922EE0F883E5FF5FB017C1C /* Pods-CryptoChart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOS.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		1C1B94AF6D037FD363A2C85B /* libPods-CryptoChart-CryptoChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-CryptoChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29EDF04919EE48C2DFFF50B7 /* libPods-CryptoChart-CryptoChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-CryptoChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* CryptoChart-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CryptoChart-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CryptoChart-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CryptoChart-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		306305313E3F37AC0C91487D /* libPods-CryptoChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31845EFED8158A82BF17DDA2 /* libPods-CryptoChart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		32EC992C52B614718C4783E2 /* Pods-CryptoChart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		40A614654B8580B21FED3583 /* Pods-CryptoChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart/Pods-CryptoChart.release.xcconfig"; sourceTree = "<group>"; };
-		59E039395494DA994CEEA50C /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-CryptoChartTests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6BE9D631C3206BF904310903 /* Pods-CryptoChart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOSTests/Pods-CryptoChart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		352E018DA80DC33C0BF5C94D /* Pods-CryptoChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart/Pods-CryptoChart.debug.xcconfig"; sourceTree = "<group>"; };
+		5A05423949A08702AE793D01 /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-CryptoChartTests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6508723B13D04FF9BB2443B0 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOSTests/Pods-CryptoChart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71D65803FC24E26540E9ECAC /* Pods-CryptoChart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOS.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7B10DD5ED4133E7A8FC9FB0E /* Pods-CryptoChart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOSTests/Pods-CryptoChart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E1D8D9A76889957FD7C03D4 /* Pods-CryptoChart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CryptoChart/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		84F9236D1939BEBB8E41D5B5 /* Pods-CryptoChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart/Pods-CryptoChart.debug.xcconfig"; sourceTree = "<group>"; };
-		A6861BF8309C1BA8A1835241 /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-CryptoChartTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests.release.xcconfig"; sourceTree = "<group>"; };
+		A162B9924DAC04C8B73812CB /* libPods-CryptoChart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B97EFBE6A6BF18DB60D1523F /* libPods-CryptoChart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CryptoChart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0D2E4825E8437C000AA8C6 /* CryptoChart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CryptoChart-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF0D2E4925E8437C000AA8C6 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		E78742179FF86D026B0B83F8 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoChart-tvOSTests/Pods-CryptoChart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CCB379E461E030BFCBCFFD5A /* Pods-CryptoChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart/Pods-CryptoChart.release.xcconfig"; sourceTree = "<group>"; };
+		E72A037C9F3AD1466FB136DB /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoChart-CryptoChartTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -77,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F1FCE2A3B7FB86FB0DA509 /* libPods-CryptoChart-CryptoChartTests.a in Frameworks */,
+				2B99C0260CBC122CDE60B674 /* libPods-CryptoChart-CryptoChartTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45F4B0A758F9A7597C9A6BFC /* libPods-CryptoChart.a in Frameworks */,
+				C5589A520096086F2BBF93EE /* libPods-CryptoChart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB94670D56C71F2E872690DA /* libPods-CryptoChart-tvOS.a in Frameworks */,
+				FD06E7FFFE44BEE6ECEB32BE /* libPods-CryptoChart-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C34D442019935B7419843186 /* libPods-CryptoChart-tvOSTests.a in Frameworks */,
+				1D8B6BBE9E1D911D437D4FC9 /* libPods-CryptoChart-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +144,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				306305313E3F37AC0C91487D /* libPods-CryptoChart.a */,
-				1C1B94AF6D037FD363A2C85B /* libPods-CryptoChart-CryptoChartTests.a */,
-				31845EFED8158A82BF17DDA2 /* libPods-CryptoChart-tvOS.a */,
-				0705218E33691ABC3565B397 /* libPods-CryptoChart-tvOSTests.a */,
+				070D0CE5C8E9C3A0464224E9 /* libPods-CryptoChart.a */,
+				29EDF04919EE48C2DFFF50B7 /* libPods-CryptoChart-CryptoChartTests.a */,
+				B97EFBE6A6BF18DB60D1523F /* libPods-CryptoChart-tvOS.a */,
+				A162B9924DAC04C8B73812CB /* libPods-CryptoChart-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,14 +191,14 @@
 		BEFE207DFA2AC145C647A70E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				84F9236D1939BEBB8E41D5B5 /* Pods-CryptoChart.debug.xcconfig */,
-				40A614654B8580B21FED3583 /* Pods-CryptoChart.release.xcconfig */,
-				59E039395494DA994CEEA50C /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */,
-				A6861BF8309C1BA8A1835241 /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */,
-				32EC992C52B614718C4783E2 /* Pods-CryptoChart-tvOS.debug.xcconfig */,
-				1922EE0F883E5FF5FB017C1C /* Pods-CryptoChart-tvOS.release.xcconfig */,
-				E78742179FF86D026B0B83F8 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */,
-				6BE9D631C3206BF904310903 /* Pods-CryptoChart-tvOSTests.release.xcconfig */,
+				352E018DA80DC33C0BF5C94D /* Pods-CryptoChart.debug.xcconfig */,
+				CCB379E461E030BFCBCFFD5A /* Pods-CryptoChart.release.xcconfig */,
+				5A05423949A08702AE793D01 /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */,
+				E72A037C9F3AD1466FB136DB /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */,
+				7E1D8D9A76889957FD7C03D4 /* Pods-CryptoChart-tvOS.debug.xcconfig */,
+				71D65803FC24E26540E9ECAC /* Pods-CryptoChart-tvOS.release.xcconfig */,
+				6508723B13D04FF9BB2443B0 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */,
+				7B10DD5ED4133E7A8FC9FB0E /* Pods-CryptoChart-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -217,12 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CryptoChartTests" */;
 			buildPhases = (
-				2B7F0585069B4B87E707B9A4 /* [CP] Check Pods Manifest.lock */,
+				658B3D9059E5D93DC9BCEE23 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				1C44254CEC91F9E808671832 /* [CP] Embed Pods Frameworks */,
-				D0830632B696A25C24CDC9C5 /* [CP] Copy Pods Resources */,
+				D02BA758E6BD42E57036B2DC /* [CP] Copy Pods Resources */,
+				C5F7A9A48F4C606DD7AD395B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,14 +238,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CryptoChart" */;
 			buildPhases = (
-				AAE7A94B0404E2E51763E5D3 /* [CP] Check Pods Manifest.lock */,
+				95BE29F0CD5A551BFDB9D8B6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				AC9E7DBCC5DF2E6DEB6FAA05 /* [CP] Embed Pods Frameworks */,
-				01E2F44B0C0B001C6BB817D9 /* [CP] Copy Pods Resources */,
+				D304CA605A6544EF9A734CCE /* [CP] Copy Pods Resources */,
+				011AA3209B8C9DE8A52B4FA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,13 +260,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CryptoChart-tvOS" */;
 			buildPhases = (
-				3C483C4D6C89707C6EDF316C /* [CP] Check Pods Manifest.lock */,
+				2F4DE464922151D0C7161FAF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
-				DFAE1BFD281341BA0800AB13 /* [CP] Copy Pods Resources */,
+				18B074838B942731404F6F30 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,7 +281,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "CryptoChart-tvOSTests" */;
 			buildPhases = (
-				198432B0354C4F45382233F8 /* [CP] Check Pods Manifest.lock */,
+				F914BB363A925E0DAED37A4A /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -392,116 +392,42 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		01E2F44B0C0B001C6BB817D9 /* [CP] Copy Pods Resources */ = {
+		011AA3209B8C9DE8A52B4FA2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core.common-CoreModulesHeaders/AccessibilityResources.bundle",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		198432B0354C4F45382233F8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CryptoChart-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1C44254CEC91F9E808671832 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2B7F0585069B4B87E707B9A4 /* [CP] Check Pods Manifest.lock */ = {
+		18B074838B942731404F6F30 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core.common/AccessibilityResources.bundle",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CryptoChart-CryptoChartTests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -518,7 +444,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		3C483C4D6C89707C6EDF316C /* [CP] Check Pods Manifest.lock */ = {
+		2F4DE464922151D0C7161FAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -540,7 +466,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AAE7A94B0404E2E51763E5D3 /* [CP] Check Pods Manifest.lock */ = {
+		658B3D9059E5D93DC9BCEE23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CryptoChart-CryptoChartTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95BE29F0CD5A551BFDB9D8B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -562,25 +510,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC9E7DBCC5DF2E6DEB6FAA05 /* [CP] Embed Pods Frameworks */ = {
+		C5F7A9A48F4C606DD7AD395B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0830632B696A25C24CDC9C5 /* [CP] Copy Pods Resources */ = {
+		D02BA758E6BD42E57036B2DC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -630,22 +580,76 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-CryptoChartTests/Pods-CryptoChart-CryptoChartTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFAE1BFD281341BA0800AB13 /* [CP] Copy Pods Resources */ = {
+		D304CA605A6544EF9A734CCE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core.common/AccessibilityResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core.common-CoreModulesHeaders/AccessibilityResources.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart-tvOS/Pods-CryptoChart-tvOS-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoChart/Pods-CryptoChart-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F914BB363A925E0DAED37A4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CryptoChart-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -742,7 +746,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E039395494DA994CEEA50C /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */;
+			baseConfigurationReference = 5A05423949A08702AE793D01 /* Pods-CryptoChart-CryptoChartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -766,7 +770,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6861BF8309C1BA8A1835241 /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */;
+			baseConfigurationReference = E72A037C9F3AD1466FB136DB /* Pods-CryptoChart-CryptoChartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -787,13 +791,14 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84F9236D1939BEBB8E41D5B5 /* Pods-CryptoChart.debug.xcconfig */;
+			baseConfigurationReference = 352E018DA80DC33C0BF5C94D /* Pods-CryptoChart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CryptoChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -811,12 +816,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40A614654B8580B21FED3583 /* Pods-CryptoChart.release.xcconfig */;
+			baseConfigurationReference = CCB379E461E030BFCBCFFD5A /* Pods-CryptoChart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = CryptoChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -833,7 +839,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32EC992C52B614718C4783E2 /* Pods-CryptoChart-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 7E1D8D9A76889957FD7C03D4 /* Pods-CryptoChart-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -861,7 +867,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1922EE0F883E5FF5FB017C1C /* Pods-CryptoChart-tvOS.release.xcconfig */;
+			baseConfigurationReference = 71D65803FC24E26540E9ECAC /* Pods-CryptoChart-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -889,7 +895,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E78742179FF86D026B0B83F8 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 6508723B13D04FF9BB2443B0 /* Pods-CryptoChart-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -916,7 +922,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BE9D631C3206BF904310903 /* Pods-CryptoChart-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 7B10DD5ED4133E7A8FC9FB0E /* Pods-CryptoChart-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -973,6 +979,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -992,7 +999,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1033,6 +1039,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1045,7 +1052,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -80,8 +80,8 @@ const CombinedChart: React.FC<IProps> = ({data}) => {
         markerColor: processColor('#2c3e50'),
         textColor: processColor('white'),
       }}
-      legend={{enabled: false}}
       zoom={zoom}
+      legend={{textColor: processColor(theme.colors.text)}}
     />
   );
 };

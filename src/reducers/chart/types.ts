@@ -1,5 +1,9 @@
+import {ChartQuery} from '../../generated/graphql';
+
 export enum ChartTypes {
   UPDATE_PROPS = '@chart/UPDATE_PROPS',
+  ADD_CHART = '@chart/ADD_CHART',
+  REMOVE_CHART = '@chart/REMOVE_CHART',
 }
 
 export enum PollInterval {
@@ -13,13 +17,19 @@ export enum PollInterval {
   H12 = 43200000,
 }
 
+interface IProps {
+  pollInterval: PollInterval;
+}
+
 export interface IChartState {
   readonly pollInterval: PollInterval;
+  readonly charts: ChartQuery[];
 }
 
 export interface IChartActions {
-  type?: ChartTypes;
-  props?: IChartState;
+  type: ChartTypes;
+  props?: IProps;
+  chart?: ChartQuery;
 }
 
 export interface IChartOptions {

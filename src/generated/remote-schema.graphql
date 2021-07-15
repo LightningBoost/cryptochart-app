@@ -25,7 +25,6 @@ type CandleStickDataset {
 
 type CandleStickValue {
     close: Float!
-    marker: String!
     open: Float!
     shadowH: Float!
     shadowL: Float!
@@ -73,12 +72,13 @@ type LineData {
 }
 
 type LineDatasets {
-    config: DataConfig!
+    config: DataConfig
+    label: String!
     values: [Values!]!
 }
 
 type Query {
-    chart(exchange: Exchanges!, interval: Interval!, queryData: [ChartQuery!]!, symbol: String!): CombinedData!
+    chart(ema: [Int!], exchange: Exchanges!, interval: Interval!, queryData: [ChartQuery!]!, symbol: String!): CombinedData!
     ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
 }
 
@@ -95,7 +95,7 @@ type Ticker24h {
 }
 
 type Values {
-    marker: String!
+    marker: String
     x: Float
     y: Float
 }
@@ -117,6 +117,7 @@ enum CandleStickPaintStyle {
 }
 
 enum ChartQuery {
+    BOLLINGERBANDS
     CANDLESTICK
     EMA
     VOLUME

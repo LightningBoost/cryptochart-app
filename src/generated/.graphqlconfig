@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Remote GraphQL Endpoint": {
-        "url": "http://localhost:4000",
+        "url": "http://localhost:5001/cryptocharts-fdc64/us-central1/api",
         "introspect": true
       }
     }

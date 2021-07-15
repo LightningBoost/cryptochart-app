@@ -17,13 +17,16 @@ const chartConversion = (data: CombinedData): CDChart => {
         values: d.values.map((v) => ({
           x: v.x || undefined,
           y: v.y || undefined,
-          marker: v.marker || undefined,
+          marker: v.marker || '',
         })) as Array<number | LineValue>,
         config: {
-          ...d.config,
+          color: processColor(d.config?.color || 'blue'),
+          drawValues: false,
           drawCircles: false,
-          color: processColor(d.config.color),
+          mode: 'CUBIC_BEZIER',
+          lineWidth: 2,
         } as LineDatasetConfig,
+        label: d.label || '',
       })),
     },
     barData: {

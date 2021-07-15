@@ -9,7 +9,6 @@ import Chart from '../../components/Chart';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
 import {
-  ChartQuery,
   CombinedData,
   Exchanges,
   Interval,
@@ -41,12 +40,14 @@ const CHART_CANDLES = gql`
     $interval: Interval!
     $symbol: String!
     $queryData: [ChartQuery!]!
+    $ema: [Int!]
   ) {
     chart(
       exchange: $exchange
       interval: $interval
       symbol: $symbol
       queryData: $queryData
+      ema: $ema
     ) {
       candleData {
         dataSets {
@@ -72,6 +73,17 @@ const CHART_CANDLES = gql`
           }
         }
       }
+      lineData {
+        dataSets {
+          values {
+            y
+          }
+          label
+          config {
+            color
+          }
+        }
+      }
     }
     ticker24h(exchange: $exchange, symbol: $symbol) {
       openTime
@@ -90,6 +102,7 @@ const CHART_CANDLES = gql`
 const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const chart = useTypedSelector((state) => state.chart);
   const {pollInterval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch, networkStatus} = useQuery<
@@ -100,7 +113,8 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
       exchange: Exchanges.Binance,
       interval: Interval.M15,
       symbol: 'BTCUSDT',
-      queryData: [ChartQuery.Candlestick],
+      queryData: chart.charts,
+      ema: [5, 10, 15, 200],
     },
     pollInterval,
     notifyOnNetworkStatusChange: true,

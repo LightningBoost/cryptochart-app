@@ -71,7 +71,7 @@ const BottomSheet: React.FC = () => {
   const theme = useTheme();
   const {children, ref, props} = useTypedSelector((state) => state.bottomSheet);
   const dispatch = useDispatch();
-  const snapPoints = useMemo(() => ['0%', '25%', '50%', '75%', '90%'], []);
+  const snapPoints = useMemo(() => [0, '25%', '50%', '75%', '90%'], []);
 
   useEffect(() => {
     if (initialRef.current && initialRef !== ref) {
