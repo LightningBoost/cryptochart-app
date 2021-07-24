@@ -38,4 +38,3 @@ target 'CryptoChart-tvOS' do
   end
 end
 
-pod 'RNCharts', :path => '../node_modules/react-native-charts-wrapper'

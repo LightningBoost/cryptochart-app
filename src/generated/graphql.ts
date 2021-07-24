@@ -13,20 +13,21 @@ export type Scalars = {
 };
 
 
-export enum AxisDependency {
-  Left = 'LEFT',
-  Right = 'RIGHT'
-}
-
 export type BarData = {
   __typename?: 'BarData';
   dataSets: Array<BarDatasets>;
-  config?: Maybe<DataConfig>;
 };
 
 export type BarDatasets = {
   __typename?: 'BarDatasets';
-  values: Array<Values>;
+  label: Scalars['String'];
+  values: Array<BarValue>;
+};
+
+export type BarValue = {
+  __typename?: 'BarValue';
+  x: Scalars['String'];
+  y: Scalars['Float'];
 };
 
 export enum CacheControlScope {
@@ -36,40 +37,22 @@ export enum CacheControlScope {
 
 export type CandleStickData = {
   __typename?: 'CandleStickData';
-  dataSets: Array<CandleStickDataset>;
+  dataSets: Array<CandleStickDatasets>;
 };
 
-export type CandleStickDataset = {
-  __typename?: 'CandleStickDataset';
-  values: Array<CandleStickValue>;
+export type CandleStickDatasets = {
+  __typename?: 'CandleStickDatasets';
   label: Scalars['String'];
-  config: CommonDatasetConfig;
+  values: Array<CandleStickValue>;
 };
-
-export enum CandleStickPaintStyle {
-  Fill = 'FILL',
-  Stroke = 'STROKE',
-  FillAndStroke = 'FILL_AND_STROKE'
-}
 
 export type CandleStickValue = {
   __typename?: 'CandleStickValue';
-  x?: Maybe<Scalars['Float']>;
-  timestamp: Scalars['Float'];
-  shadowH: Scalars['Float'];
-  shadowL: Scalars['Float'];
+  x: Scalars['String'];
+  high: Scalars['Float'];
+  low: Scalars['Float'];
   open: Scalars['Float'];
   close: Scalars['Float'];
-  volume: Scalars['String'];
-};
-
-export type Candles = {
-  __typename?: 'Candles';
-  timestamp: Scalars['Float'];
-  open: Scalars['String'];
-  high: Scalars['String'];
-  low: Scalars['String'];
-  close: Scalars['String'];
   volume: Scalars['String'];
 };
 
@@ -82,37 +65,9 @@ export enum ChartQuery {
 
 export type CombinedData = {
   __typename?: 'CombinedData';
-  lineData?: Maybe<LineData>;
-  barData?: Maybe<BarData>;
-  candleData?: Maybe<CandleStickData>;
-};
-
-export type CommonDatasetConfig = {
-  __typename?: 'CommonDatasetConfig';
-  drawValues: Scalars['Boolean'];
-  axisDependency: AxisDependency;
-  shadowWidth?: Maybe<Scalars['Float']>;
-  shadowColor?: Maybe<Scalars['String']>;
-  shadowColorSameAsCandle?: Maybe<Scalars['Boolean']>;
-  decreasingColor?: Maybe<Scalars['String']>;
-  increasingColor?: Maybe<Scalars['String']>;
-  decreasingPaintStyle?: Maybe<CandleStickPaintStyle>;
-  increasingPaintStyle?: Maybe<CandleStickPaintStyle>;
-};
-
-export enum ConfigMode {
-  Linear = 'LINEAR',
-  Stepped = 'STEPPED',
-  CubicBezier = 'CUBIC_BEZIER',
-  HorizontalBezier = 'HORIZONTAL_BEZIER'
-}
-
-export type DataConfig = {
-  __typename?: 'DataConfig';
-  mode?: Maybe<ConfigMode>;
-  drawCircles?: Maybe<Scalars['Boolean']>;
-  color: Scalars['String'];
-  barWidth?: Maybe<Scalars['Float']>;
+  lineData: LineData;
+  barData: BarData;
+  candleData: CandleStickData;
 };
 
 export enum Exchanges {
@@ -141,9 +96,14 @@ export type LineData = {
 
 export type LineDatasets = {
   __typename?: 'LineDatasets';
-  values: Array<Values>;
-  config?: Maybe<DataConfig>;
   label: Scalars['String'];
+  values: Array<LineValues>;
+};
+
+export type LineValues = {
+  __typename?: 'LineValues';
+  x: Scalars['String'];
+  y: Scalars['Float'];
 };
 
 export type Query = {
@@ -178,11 +138,4 @@ export type Ticker24h = {
   volume: Scalars['String'];
   openTime: Scalars['Float'];
   closeTime: Scalars['Float'];
-};
-
-export type Values = {
-  __typename?: 'Values';
-  x?: Maybe<Scalars['Float']>;
-  y?: Maybe<Scalars['Float']>;
-  marker?: Maybe<Scalars['String']>;
 };

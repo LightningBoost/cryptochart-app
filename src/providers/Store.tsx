@@ -4,6 +4,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -13,8 +14,11 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: ['bottomSheet'],
+  stateReconciler: autoMergeLevel2,
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const middlewares = [thunk];

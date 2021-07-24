@@ -11,7 +11,6 @@ import SafeAreaView from '../../components/View/safeAreaView';
 import {
   CombinedData,
   Exchanges,
-  Interval,
   QueryChartArgs,
   QueryTicker24hArgs,
   Ticker24h,
@@ -24,7 +23,6 @@ import OpenHighLowClose from '../../components/OpenHighLowClose';
 import {openBottomSheet} from '../../actions/bottomSheetActions';
 import ChartOptions from '../../components/ChartOptions';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import chartConversion from '../../utils/chartConversion';
 
 Entypo.loadFont();
 
@@ -52,36 +50,32 @@ const CHART_CANDLES = gql`
       candleData {
         dataSets {
           values {
-            timestamp
-            shadowH
-            shadowL
+            x
+            high
+            low
             open
             close
             volume
           }
           label
-          config {
-            drawValues
-            shadowWidth
-            shadowColor
-            shadowColorSameAsCandle
-            decreasingColor
-            increasingColor
-            decreasingPaintStyle
-            increasingPaintStyle
-            axisDependency
-          }
         }
       }
       lineData {
         dataSets {
           values {
             y
+            x
           }
           label
-          config {
-            color
+        }
+      }
+      barData {
+        dataSets {
+          values {
+            y
+            x
           }
+          label
         }
       }
     }
@@ -103,7 +97,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const chart = useTypedSelector((state) => state.chart);
-  const {pollInterval} = useTypedSelector((state) => state.chart);
+  const {pollInterval, interval} = useTypedSelector((state) => state.chart);
 
   const {data, refetch, networkStatus} = useQuery<
     {chart: CombinedData; ticker24h: Ticker24h},
@@ -111,7 +105,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   >(CHART_CANDLES, {
     variables: {
       exchange: Exchanges.Binance,
-      interval: Interval.M15,
+      interval,
       symbol: 'BTCUSDT',
       queryData: chart.charts,
       ema: [5, 10, 15, 200],
@@ -168,7 +162,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Chart data={chartConversion(data.chart)} />
+        <Chart data={data.chart} />
       </FullHeightView>
     </SafeAreaView>
   );

@@ -1,9 +1,10 @@
 import remove from 'lodash/remove';
 import {ChartTypes, IChartActions, IChartState, PollInterval} from './types';
-import {ChartQuery} from '../../generated/graphql';
+import {ChartQuery, Interval} from '../../generated/graphql';
 
 const initialState: IChartState = {
   pollInterval: PollInterval.M1,
+  interval: Interval.M15,
   charts: [ChartQuery.Candlestick],
 };
 

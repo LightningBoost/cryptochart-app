@@ -1,4 +1,4 @@
-import {ChartQuery} from '../../generated/graphql';
+import {ChartQuery, Interval} from '../../generated/graphql';
 
 export enum ChartTypes {
   UPDATE_PROPS = '@chart/UPDATE_PROPS',
@@ -19,10 +19,12 @@ export enum PollInterval {
 
 interface IProps {
   pollInterval: PollInterval;
+  interval: Interval;
 }
 
 export interface IChartState {
   readonly pollInterval: PollInterval;
+  readonly interval: Interval;
   readonly charts: ChartQuery[];
 }
 
@@ -34,4 +36,5 @@ export interface IChartActions {
 
 export interface IChartOptions {
   pollInterval?: PollInterval;
+  interval?: Interval;
 }
