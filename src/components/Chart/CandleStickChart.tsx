@@ -24,6 +24,26 @@ const CandleStickChart = ({data}: ICandleStickChart): Element[] => {
 
   return [
     data.map((chart, i) => (
+      <VictoryCandlestick
+        key={chart.label}
+        data={chart.values}
+        x={(datum) => dayjs(parseInt(datum.x, 10)).toDate()}
+        open={(datum) =>
+          ((datum as any).open - minima[i]) / (maxima[i] - minima[i])
+        }
+        close={(datum) =>
+          ((datum as any).close - minima[i]) / (maxima[i] - minima[i])
+        }
+        high={(datum) =>
+          ((datum as any).high - minima[i]) / (maxima[i] - minima[i])
+        }
+        low={(datum) =>
+          ((datum as any).low - minima[i]) / (maxima[i] - minima[i])
+        }
+        candleColors={{positive: 'green', negative: 'red'}}
+      />
+    )),
+    data.map((chart, i) => (
       <VictoryAxis
         key={chart.label}
         dependentAxis
@@ -44,26 +64,6 @@ const CandleStickChart = ({data}: ICandleStickChart): Element[] => {
           tickLabels: {textAnchor: 'start', fill: theme.colors.text},
           ticks: {padding: -15, size: -5},
         }}
-      />
-    )),
-    data.map((chart, i) => (
-      <VictoryCandlestick
-        key={chart.label}
-        data={chart.values}
-        x={(datum) => dayjs(parseInt(datum.x, 10)).toDate()}
-        open={(datum) =>
-          ((datum as any).open - minima[i]) / (maxima[i] - minima[i])
-        }
-        close={(datum) =>
-          ((datum as any).close - minima[i]) / (maxima[i] - minima[i])
-        }
-        high={(datum) =>
-          ((datum as any).high - minima[i]) / (maxima[i] - minima[i])
-        }
-        low={(datum) =>
-          ((datum as any).low - minima[i]) / (maxima[i] - minima[i])
-        }
-        candleColors={{positive: 'green', negative: 'red'}}
       />
     )),
   ];
