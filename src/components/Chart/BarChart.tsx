@@ -2,16 +2,16 @@ import React, {useCallback, useMemo} from 'react';
 import {VictoryBar} from 'victory-native';
 import dayjs from 'dayjs';
 import {minBy, maxBy} from 'lodash';
-import {BarDatasets} from '../../generated/graphql';
+import {BarDataset} from '../../generated/graphql';
 
 interface IBarChart {
-  data: BarDatasets[];
+  data: BarDataset;
 }
 
 const MAX_BAR_PERCENT = 0.25;
 
 const BarChart = ({data}: IBarChart): Element[] => {
-  const getDomain = useCallback((chart: BarDatasets) => {
+  const getDomain = useCallback((chart: BarDataset) => {
     return {
       y: [
         minBy(chart.values, (d) => d.y)?.y || 0,
@@ -25,22 +25,19 @@ const BarChart = ({data}: IBarChart): Element[] => {
   }, []);
 
   const maxima = useMemo(() => {
-    return data.map(
-      (dataset) =>
-        Math.max(...dataset.values.map((d) => d.y)) / MAX_BAR_PERCENT,
-    );
+    return Math.max(...data.values.map((d) => d.y)) / MAX_BAR_PERCENT;
   }, [data]);
 
-  return data.map((chart, i) => (
+  return [
     <VictoryBar
-      key={chart.label}
-      data={chart.values}
-      domain={getDomain(chart)}
+      key={data.label}
+      data={data.values}
+      domain={getDomain(data)}
       x={(datum) => dayjs(parseInt(datum.x, 10)).toDate()}
-      y={(datum) => datum.y / maxima[i]}
+      y={(datum) => datum.y / maxima}
       style={{data: {fillOpacity: 0.7}}}
-    />
-  ));
+    />,
+  ];
 };
 
 export default BarChart;

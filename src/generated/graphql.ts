@@ -15,11 +15,11 @@ export type Scalars = {
 
 export type BarData = {
   __typename?: 'BarData';
-  dataSets: Array<BarDatasets>;
+  dataSets: BarDataset;
 };
 
-export type BarDatasets = {
-  __typename?: 'BarDatasets';
+export type BarDataset = {
+  __typename?: 'BarDataset';
   label: Scalars['String'];
   values: Array<BarValue>;
 };
@@ -37,11 +37,11 @@ export enum CacheControlScope {
 
 export type CandleStickData = {
   __typename?: 'CandleStickData';
-  dataSets: Array<CandleStickDatasets>;
+  dataSets: CandleStickDataset;
 };
 
-export type CandleStickDatasets = {
-  __typename?: 'CandleStickDatasets';
+export type CandleStickDataset = {
+  __typename?: 'CandleStickDataset';
   label: Scalars['String'];
   values: Array<CandleStickValue>;
 };
@@ -65,8 +65,8 @@ export enum ChartQuery {
 
 export type CombinedData = {
   __typename?: 'CombinedData';
-  lineData: LineData;
-  barData: BarData;
+  lineData?: Maybe<LineData>;
+  barData?: Maybe<BarData>;
   candleData: CandleStickData;
 };
 

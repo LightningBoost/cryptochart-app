@@ -10,14 +10,14 @@ import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import {useTheme} from 'react-native-paper';
+
 import {
-  BarDatasets,
-  CandleStickDatasets,
+  BarDataset,
+  CandleStickDataset,
   CombinedData,
-  LineDatasets,
 } from '../../generated/graphql';
 import CandleStickChart from './CandleStickChart';
-import filterData from '../../utils/filterData';
+import {filterData, filterLinesData} from '../../utils/filterData';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 
@@ -30,14 +30,36 @@ interface IProps {
 
 const MAX_VALUES = 50;
 
+const generateBarChart = (data: CombinedData) => {
+  if (data.barData) {
+    return BarChart({data: data.barData.dataSets});
+  }
+  return null;
+};
+
+const generateLineChart = ({
+  data,
+  maxima,
+  minima,
+}: {
+  data: CombinedData;
+  maxima: number;
+  minima: number;
+}) => {
+  if (data.lineData) {
+    return LineChart({data: data.lineData.dataSets, maxima, minima});
+  }
+  return null;
+};
+
 const Chart: React.FC<IProps> = ({data}) => {
   const theme = useTheme();
 
   const initialDate = useMemo(() => {
     return dayjs(
       parseInt(
-        data.candleData.dataSets[0].values[
-          data.candleData.dataSets[0].values.length - MAX_VALUES
+        data.candleData.dataSets.values[
+          data.candleData.dataSets.values.length - MAX_VALUES
         ].x,
         10,
       ),
@@ -47,8 +69,8 @@ const Chart: React.FC<IProps> = ({data}) => {
   const lastDate = useMemo(() => {
     return dayjs(
       parseInt(
-        data.candleData.dataSets[0].values[
-          data.candleData.dataSets[0].values.length - 1
+        data.candleData.dataSets.values[
+          data.candleData.dataSets.values.length - 1
         ].x,
         10,
       ),
@@ -59,32 +81,42 @@ const Chart: React.FC<IProps> = ({data}) => {
   const [xDomain, setXDomain] = useState([initialDate, lastDate]);
 
   const filteredData = useMemo(() => {
+    let filteredBarDataSets;
+    let filteredLineDataSets;
     const filteredCandleDataSets = filterData({
       dataSet: data.candleData.dataSets,
       initialDate: dayjs(xDomain[0]),
       finalDate: dayjs(xDomain[1]),
     });
-    const filteredBarDataSets = filterData({
-      dataSet: data.barData.dataSets,
-      initialDate: dayjs(xDomain[0]),
-      finalDate: dayjs(xDomain[1]),
-    });
-    const filteredLineDataSets = filterData({
-      dataSet: data.lineData.dataSets,
-      initialDate: dayjs(xDomain[0]),
-      finalDate: dayjs(xDomain[1]),
-    });
+    if (data.barData) {
+      filteredBarDataSets = filterData({
+        dataSet: data.barData.dataSets,
+        initialDate: dayjs(xDomain[0]),
+        finalDate: dayjs(xDomain[1]),
+      });
+    }
+    if (data.lineData) {
+      filteredLineDataSets = filterLinesData({
+        dataSet: data.lineData.dataSets,
+        initialDate: dayjs(xDomain[0]),
+        finalDate: dayjs(xDomain[1]),
+      });
+    }
 
     return {
       candleData: {
-        dataSets: filteredCandleDataSets as CandleStickDatasets[],
+        dataSets: filteredCandleDataSets as CandleStickDataset,
       },
-      barData: {
-        dataSets: filteredBarDataSets as BarDatasets[],
-      },
-      lineData: {
-        dataSets: filteredLineDataSets as LineDatasets[],
-      },
+      ...(data.barData && {
+        barData: {
+          dataSets: filteredBarDataSets as BarDataset,
+        },
+      }),
+      ...(data.lineData && {
+        lineData: {
+          dataSets: filteredLineDataSets,
+        },
+      }),
     };
   }, [data, xDomain]);
 
@@ -92,11 +124,11 @@ const Chart: React.FC<IProps> = ({data}) => {
     return {
       y: [0, 1] as [number, number],
       x: [
-        dayjs(parseInt(data.candleData.dataSets[0].values[0].x, 10)).toDate(),
+        dayjs(parseInt(data.candleData.dataSets.values[0].x, 10)).toDate(),
         dayjs(
           parseInt(
-            data.candleData.dataSets[0].values[
-              data.candleData.dataSets[0].values.length - 1
+            data.candleData.dataSets.values[
+              data.candleData.dataSets.values.length - 1
             ].x,
             10,
           ),
@@ -110,8 +142,8 @@ const Chart: React.FC<IProps> = ({data}) => {
       x: [
         dayjs(
           parseInt(
-            data.candleData.dataSets[0].values[
-              data.candleData.dataSets[0].values.length - MAX_VALUES
+            data.candleData.dataSets.values[
+              data.candleData.dataSets.values.length - MAX_VALUES
             ].x,
             10,
           ),
@@ -124,6 +156,38 @@ const Chart: React.FC<IProps> = ({data}) => {
   const formatXTick = useCallback((value: string) => {
     return dayjs(value).format(dayjs(value).hour() === 0 ? 'DD' : 'LT');
   }, []);
+
+  const maxima = useMemo(() => {
+    const lineMaxima = filteredData.lineData?.dataSets
+      ? Math.max(
+          ...filteredData?.lineData?.dataSets?.map((dataSet) =>
+            Math.max(...dataSet.values.map((value) => value.y)),
+          ),
+        )
+      : undefined;
+
+    const candleMaxima = Math.max(
+      ...filteredData.candleData.dataSets.values.map((d) => d.high),
+    );
+
+    return lineMaxima ? Math.max(candleMaxima, lineMaxima) : candleMaxima;
+  }, [filteredData.candleData.dataSets, filteredData.lineData]);
+
+  const minima = useMemo(() => {
+    const lineMinima = filteredData.lineData?.dataSets
+      ? Math.min(
+          ...filteredData?.lineData?.dataSets?.map((dataSet) =>
+            Math.min(...dataSet.values.map((value) => value.y)),
+          ),
+        )
+      : undefined;
+
+    const candleMinima = Math.min(
+      ...filteredData.candleData.dataSets.values.map((d) => d.low),
+    );
+
+    return lineMinima ? Math.min(candleMinima, lineMinima) : candleMinima;
+  }, [filteredData.candleData.dataSets, filteredData.lineData]);
 
   return (
     <View
@@ -158,9 +222,13 @@ const Chart: React.FC<IProps> = ({data}) => {
           tickFormat={formatXTick}
           style={{tickLabels: {fill: theme.colors.text}}}
         />
-        {CandleStickChart({data: filteredData.candleData.dataSets})}
-        {LineChart({data: filteredData.lineData.dataSets})}
-        {BarChart({data: filteredData.barData.dataSets})}
+        {generateLineChart({data, maxima, minima})}
+        {generateBarChart(data)}
+        {CandleStickChart({
+          data: filteredData.candleData.dataSets,
+          maxima,
+          minima,
+        })}
       </VictoryChart>
     </View>
   );

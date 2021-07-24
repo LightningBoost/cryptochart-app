@@ -5,10 +5,10 @@ schema {
 }
 
 type BarData {
-    dataSets: [BarDatasets!]!
+    dataSets: BarDataset!
 }
 
-type BarDatasets {
+type BarDataset {
     label: String!
     values: [BarValue!]!
 }
@@ -19,10 +19,10 @@ type BarValue {
 }
 
 type CandleStickData {
-    dataSets: [CandleStickDatasets!]!
+    dataSets: CandleStickDataset!
 }
 
-type CandleStickDatasets {
+type CandleStickDataset {
     label: String!
     values: [CandleStickValue!]!
 }
@@ -37,9 +37,9 @@ type CandleStickValue {
 }
 
 type CombinedData {
-    barData: BarData!
+    barData: BarData
     candleData: CandleStickData!
-    lineData: LineData!
+    lineData: LineData
 }
 
 type LineData {

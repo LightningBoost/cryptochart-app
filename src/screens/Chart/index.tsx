@@ -125,7 +125,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
           />
         </View>
       ),
-      title: data && data.chart.candleData?.dataSets[0].label,
+      title: data && data.chart.candleData.dataSets.label,
     });
     // eslint-disable-next-line
   }, [networkStatus]);
