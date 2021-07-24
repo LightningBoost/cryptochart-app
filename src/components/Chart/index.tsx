@@ -9,6 +9,7 @@ import {
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import {useTheme} from 'react-native-paper';
 import {
   BarDatasets,
   CandleStickDatasets,
@@ -30,6 +31,8 @@ interface IProps {
 const MAX_VALUES = 50;
 
 const Chart: React.FC<IProps> = ({data}) => {
+  const theme = useTheme();
+
   const initialDate = useMemo(() => {
     return dayjs(
       parseInt(
@@ -150,7 +153,11 @@ const Chart: React.FC<IProps> = ({data}) => {
             }}
           />
         }>
-        <VictoryAxis tickFormat={formatXTick} />
+        <VictoryAxis
+          gridComponent={<></>}
+          tickFormat={formatXTick}
+          style={{tickLabels: {fill: theme.colors.text}}}
+        />
         {CandleStickChart({data: filteredData.candleData.dataSets})}
         {LineChart({data: filteredData.lineData.dataSets})}
         {BarChart({data: filteredData.barData.dataSets})}

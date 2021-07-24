@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import {VictoryAxis, VictoryCandlestick} from 'victory-native';
 import dayjs from 'dayjs';
+import {useTheme} from 'react-native-paper';
 import {CandleStickDatasets} from '../../generated/graphql';
 import Currency from '../../utils/currencyjs';
 
@@ -9,6 +10,8 @@ interface ICandleStickChart {
 }
 
 const CandleStickChart = ({data}: ICandleStickChart): Element[] => {
+  const theme = useTheme();
+
   const maxima = useMemo(() => {
     return data.map((dataset) =>
       Math.max(...dataset.values.map((d) => d.high)),
@@ -24,6 +27,7 @@ const CandleStickChart = ({data}: ICandleStickChart): Element[] => {
       <VictoryAxis
         key={chart.label}
         dependentAxis
+        gridComponent={<></>}
         tickValues={[0.25, 0.5, 0.75, 1]}
         tickFormat={(t) =>
           Currency(
@@ -37,7 +41,7 @@ const CandleStickChart = ({data}: ICandleStickChart): Element[] => {
           ).format()
         }
         style={{
-          tickLabels: {textAnchor: 'start'},
+          tickLabels: {textAnchor: 'start', fill: theme.colors.text},
           ticks: {padding: -15, size: -5},
         }}
       />
