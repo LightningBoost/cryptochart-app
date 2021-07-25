@@ -47,6 +47,7 @@ type LineData {
 }
 
 type LineDatasets {
+    color: String
     label: String!
     values: [LineValues!]!
 }

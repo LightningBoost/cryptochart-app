@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {
   VictoryAxis,
   VictoryChart,
+  VictoryLegend,
   VictoryTheme,
   VictoryZoomContainer,
 } from 'victory-native';
@@ -217,6 +218,16 @@ const Chart: React.FC<IProps> = ({data}) => {
             }}
           />
         }>
+        {data.lineData && data.lineData?.dataSets.length > 0 && (
+          <VictoryLegend
+            orientation="horizontal"
+            y={dimensions.height * 0.96}
+            data={data.lineData?.dataSets.map((line) => ({
+              name: line.label,
+              symbol: {fill: line?.color || undefined},
+            }))}
+          />
+        )}
         <VictoryAxis
           gridComponent={<></>}
           tickFormat={formatXTick}

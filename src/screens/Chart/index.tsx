@@ -67,6 +67,7 @@ const CHART_CANDLES = gql`
             x
           }
           label
+          color
         }
       }
       barData {

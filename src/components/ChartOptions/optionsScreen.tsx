@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
 import {TouchableOpacity} from '@gorhom/bottom-sheet';
-import {Paragraph} from 'react-native-paper';
+import {Paragraph, useTheme} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 import FullWidthView from '../View/fullWidth';
@@ -15,6 +15,7 @@ MaterialIcons.loadFont();
 const OptionsScreen: React.FC = () => {
   const {t} = useTranslation();
   const navigation = useNavigation();
+  const theme = useTheme();
 
   return (
     <FullWidthView>
@@ -28,12 +29,10 @@ const OptionsScreen: React.FC = () => {
         <Volume />
       </View>
       <View style={styles.rows}>
-        <Paragraph style={styles.paragraph}>
-          {t('Add technical analysis')}
-        </Paragraph>
+        <Paragraph style={styles.paragraph}>{t('Indicators')}</Paragraph>
         <TouchableOpacity
           onPress={() => navigation.navigate('TechnicalOptions')}>
-          <MaterialIcons name="add-circle" size={28} color="green" />
+          <MaterialIcons name="edit" size={28} color={theme.colors.text} />
         </TouchableOpacity>
       </View>
     </FullWidthView>

@@ -98,6 +98,7 @@ export type LineDatasets = {
   __typename?: 'LineDatasets';
   label: Scalars['String'];
   values: Array<LineValues>;
+  color?: Maybe<Scalars['String']>;
 };
 
 export type LineValues = {

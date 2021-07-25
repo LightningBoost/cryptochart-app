@@ -16,6 +16,7 @@ const LineChart = ({data, maxima, minima}: ILineChart): Element[] => {
       data={chart.values}
       x={(datum) => dayjs(parseInt(datum.x, 10)).toDate()}
       y={(datum) => (datum.y - minima) / (maxima - minima)}
+      style={{data: {stroke: chart?.color || undefined}}}
     />
   ));
 };
