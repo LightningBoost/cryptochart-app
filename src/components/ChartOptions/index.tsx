@@ -37,8 +37,7 @@ const ChartOptions: React.FC = () => {
       },
       cardShadowEnabled: false,
     }),
-    // eslint-disable-next-line
-    [],
+    [theme.colors.background],
   );
 
   const optionsScreenOptions = useMemo<StackNavigationOptions>(
