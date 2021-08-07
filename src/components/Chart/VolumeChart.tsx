@@ -1,16 +1,18 @@
-import React, {useCallback, useMemo} from 'react';
-import {VictoryBar} from 'victory-native';
+import React, {ReactElement, useCallback, useMemo} from 'react';
+
 import dayjs from 'dayjs';
-import {minBy, maxBy} from 'lodash';
+import {maxBy, minBy} from 'lodash';
+import {VictoryBar} from 'victory-native';
+
 import {BarDataset} from '../../generated/graphql';
 
-interface IBarChart {
+interface IVolumeChart {
   data: BarDataset;
 }
 
 const MAX_BAR_PERCENT = 0.25;
 
-const BarChart = ({data}: IBarChart): Element[] => {
+const VolumeChart = ({data}: IVolumeChart): ReactElement[] => {
   const getDomain = useCallback((chart: BarDataset) => {
     return {
       y: [
@@ -40,4 +42,4 @@ const BarChart = ({data}: IBarChart): Element[] => {
   ];
 };
 
-export default BarChart;
+export default VolumeChart;

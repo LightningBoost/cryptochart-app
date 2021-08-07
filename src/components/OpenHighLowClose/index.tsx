@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native-paper';
-import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {StyleSheet, View} from 'react-native';
+import {Text} from 'react-native-paper';
+
 import Currency from '../../utils/currencyjs';
 
 interface Props {

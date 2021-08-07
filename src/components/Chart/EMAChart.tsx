@@ -5,7 +5,7 @@ import {VictoryLine} from 'victory-native';
 
 import {ILineChart} from './interface';
 
-const LineChart = ({data, maxima, minima}: ILineChart): Element[] => {
+const EMAChart = ({data, maxima, minima}: ILineChart): Element[] => {
   return data.map((chart) => (
     <VictoryLine
       key={chart.label}
@@ -17,4 +17,4 @@ const LineChart = ({data, maxima, minima}: ILineChart): Element[] => {
   ));
 };
 
-export default LineChart;
+export default EMAChart;

@@ -1,10 +1,12 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
 import {Title, Subheading, Text} from 'react-native-paper';
-import {useTranslation} from 'react-i18next';
+
 import dayjs from 'dayjs';
-import Currency from '../../utils/currencyjs';
+
 import {Ticker24h} from '../../generated/graphql';
+import Currency from '../../utils/currencyjs';
 
 interface Props {
   ticker24h: Ticker24h;

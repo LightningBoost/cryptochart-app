@@ -1,10 +1,11 @@
 import React, {useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
-import {useTypedSelector} from '../../../hooks/useTypedSelector';
-import {Interval} from '../../../generated/graphql';
-import Picker from '../../Picker';
+
 import {updateChartOptions} from '../../../actions/chartActions';
+import {Interval} from '../../../generated/graphql';
+import {useTypedSelector} from '../../../hooks/useTypedSelector';
+import Picker from '../../Picker';
 
 const CandleInterval: React.FC = () => {
   const {t} = useTranslation();

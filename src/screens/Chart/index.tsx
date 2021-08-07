@@ -1,11 +1,19 @@
 import React, {useEffect} from 'react';
-import {gql, NetworkStatus, useQuery} from '@apollo/client';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import Entypo from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from 'react-native-paper';
+import Entypo from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch} from 'react-redux';
+
+import {NetworkStatus, useQuery} from '@apollo/client';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+import {openBottomSheet} from '../../actions/bottomSheetActions';
+import ActivityIndicator from '../../components/ActivityIndicator';
 import Chart from '../../components/Chart';
+import ChartOptions from '../../components/ChartOptions';
+import OpenHighLowClose from '../../components/OpenHighLowClose';
+import Price from '../../components/Price';
+import RefreshButton from '../../components/RefreshButton';
 import FullHeightView from '../../components/View/fullHeight';
 import SafeAreaView from '../../components/View/safeAreaView';
 import {
@@ -15,84 +23,20 @@ import {
   QueryTicker24hArgs,
   Ticker24h,
 } from '../../generated/graphql';
-import ActivityIndicator from '../../components/ActivityIndicator';
-import Price from '../../components/Price';
-import {StackParamList} from '../../routes/interfaces';
-import RefreshButton from '../../components/RefreshButton';
-import OpenHighLowClose from '../../components/OpenHighLowClose';
-import {openBottomSheet} from '../../actions/bottomSheetActions';
-import ChartOptions from '../../components/ChartOptions';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import chartQueries from '../../queries/chartQueries';
+import {ChartStackParamList} from '../../routes/interfaces';
 
 Entypo.loadFont();
 
-type ChartScreenNavigationProp = StackNavigationProp<StackParamList, 'Chart'>;
+type ChartScreenNavigationProp = StackNavigationProp<
+  ChartStackParamList,
+  'Chart'
+>;
 
 type Props = {
   navigation: ChartScreenNavigationProp;
 };
-
-const CHART_CANDLES = gql`
-  query getData(
-    $exchange: Exchanges!
-    $interval: Interval!
-    $symbol: String!
-    $queryData: [ChartQuery!]!
-    $ema: [Int!]
-  ) {
-    chart(
-      exchange: $exchange
-      interval: $interval
-      symbol: $symbol
-      queryData: $queryData
-      ema: $ema
-    ) {
-      candleData {
-        dataSets {
-          values {
-            x
-            high
-            low
-            open
-            close
-            volume
-          }
-          label
-        }
-      }
-      lineData {
-        dataSets {
-          values {
-            y
-            x
-          }
-          label
-          color
-        }
-      }
-      barData {
-        dataSets {
-          values {
-            y
-            x
-          }
-          label
-        }
-      }
-    }
-    ticker24h(exchange: $exchange, symbol: $symbol) {
-      openTime
-      closeTime
-      openPrice
-      lastPrice
-      highPrice
-      lowPrice
-      volume
-      priceChange
-      priceChangePercent
-    }
-  }
-`;
 
 const ChartScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
@@ -103,7 +47,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
   const {data, refetch, networkStatus} = useQuery<
     {chart: CombinedData; ticker24h: Ticker24h},
     QueryChartArgs & QueryTicker24hArgs
-  >(CHART_CANDLES, {
+  >(chartQueries, {
     variables: {
       exchange: Exchanges.Binance,
       interval,
@@ -126,7 +70,7 @@ const ChartScreen: React.FC<Props> = ({navigation}) => {
           />
         </View>
       ),
-      title: data && data.chart.candleData.dataSets.label,
+      title: data && data.chart.candleData.label,
     });
     // eslint-disable-next-line
   }, [networkStatus]);

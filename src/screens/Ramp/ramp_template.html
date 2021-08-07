@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+  <title>Ramp</title>
+
+  <!--- Include Ramp SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@ramp-network/ramp-instant-sdk@latest/dist/ramp-instant-sdk.umd.js"></script>
+</head>
+<body>
+<div id='container' style='flex: 1'>
+
+</div>
+
+<script type="application/javascript">
+  const startRamp = () => {
+    window.ReactNativeWebView.postMessage('init Ramp...')
+    new rampInstantSdk.RampInstantSDK({
+      url: 'https://ri-widget-staging.firebaseapp.com',
+      containerNode: document.querySelector('#container'),
+      variant: 'mobile',
+      hostAppName: 'CryptoChart',
+      hostLogoUrl: 'https://pbs.twimg.com/media/EumBMipXAAU6bWo?format=png&name=360x360',
+      hostApiKey: 'uk3opd8r77f8rp8w2rphvq4jrgvrspoz5batkvxd',
+      defaultAsset: "BTC"
+    })
+      .on('*', (event) => {
+        window.ReactNativeWebView.postMessage(JSON.stringify(event))
+      })
+      .show();
+  }
+  startRamp()
+
+</script>
+
+</body>
+</html>

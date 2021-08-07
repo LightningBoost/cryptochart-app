@@ -1,13 +1,15 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
-import {TouchableOpacity} from '@gorhom/bottom-sheet';
 import {Paragraph, useTheme} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import {TouchableOpacity} from '@gorhom/bottom-sheet';
 import {useNavigation} from '@react-navigation/native';
+
 import FullWidthView from '../View/fullWidth';
-import RefreshInterval from './RefreshInterval';
 import CandleInterval from './CandleInterval';
+import RefreshInterval from './RefreshInterval';
 import Volume from './Volume';
 
 MaterialIcons.loadFont();

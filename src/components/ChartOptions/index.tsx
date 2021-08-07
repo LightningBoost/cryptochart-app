@@ -1,13 +1,15 @@
 import React, {useMemo} from 'react';
+import {useTranslation} from 'react-i18next';
+import {useTheme} from 'react-native-paper';
+
+import {TouchableOpacity} from '@gorhom/bottom-sheet';
 import {
   createStackNavigator,
   HeaderBackButton,
   StackNavigationOptions,
   TransitionPresets,
 } from '@react-navigation/stack';
-import {TouchableOpacity} from '@gorhom/bottom-sheet';
-import {useTheme} from 'react-native-paper';
-import {useTranslation} from 'react-i18next';
+
 import OptionsScreen from './optionsScreen';
 import TechnicalOptions from './technicalOptions';
 

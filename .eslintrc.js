@@ -17,7 +17,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'import', 'jsx-a11y'],
+  plugins: ['react', 'import', 'import-helpers', 'jsx-a11y'],
   rules: {
     'react/jsx-filename-extension': [
       'error',
@@ -36,6 +36,16 @@ module.exports = {
         tsx: 'never',
       },
     ],
+
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        newlinesBetween: 'always', // new line between groups
+        groups: ['/^react/', 'module', ['parent', 'sibling', 'index']],
+        alphabetize: {order: 'asc', ignoreCase: true},
+      },
+    ],
+
     'no-use-before-define': 'off',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

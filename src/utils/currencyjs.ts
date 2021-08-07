@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import currency from 'currency.js';
+import dayjs from 'dayjs';
 
 interface IOptions {
   symbol?: string;

@@ -1,6 +1,8 @@
 import {initReactI18next} from 'react-i18next';
 import {getLocales} from 'react-native-localize';
+
 import i18next from 'i18next';
+
 import languageDetector, {LanguageDetector} from './languageDetector';
 
 const resources = {

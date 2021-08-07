@@ -60,14 +60,17 @@ export enum ChartQuery {
   Candlestick = 'CANDLESTICK',
   Volume = 'VOLUME',
   Ema = 'EMA',
-  Bollingerbands = 'BOLLINGERBANDS'
+  Bollingerbands = 'BOLLINGERBANDS',
+  Macd = 'MACD'
 }
 
 export type CombinedData = {
   __typename?: 'CombinedData';
-  lineData?: Maybe<LineData>;
-  barData?: Maybe<BarData>;
-  candleData: CandleStickData;
+  candleData: CandleStickDataset;
+  ema?: Maybe<LineData>;
+  macd?: Maybe<LineData>;
+  volume?: Maybe<BarDataset>;
+  bollingerBands?: Maybe<LineData>;
 };
 
 export enum Exchanges {
@@ -107,6 +110,20 @@ export type LineValues = {
   y: Scalars['Float'];
 };
 
+export type Macd = {
+  fast: Scalars['Int'];
+  slow: Scalars['Int'];
+  lag: Scalars['Int'];
+  source: MacdSource;
+};
+
+export enum MacdSource {
+  Open = 'open',
+  High = 'high',
+  Low = 'low',
+  Close = 'close'
+}
+
 export type Query = {
   __typename?: 'Query';
   chart: CombinedData;
@@ -120,6 +137,7 @@ export type QueryChartArgs = {
   symbol: Scalars['String'];
   queryData: Array<ChartQuery>;
   ema?: Maybe<Array<Scalars['Int']>>;
+  macd?: Maybe<Macd>;
 };
 
 

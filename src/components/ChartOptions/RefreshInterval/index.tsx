@@ -1,10 +1,11 @@
 import React, {useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
+
 import {updateChartOptions} from '../../../actions/chartActions';
+import {useTypedSelector} from '../../../hooks/useTypedSelector';
 import {PollInterval} from '../../../reducers/chart/types';
 import Picker from '../../Picker';
-import {useTypedSelector} from '../../../hooks/useTypedSelector';
 
 const RefreshInterval: React.FC = () => {
   const {t} = useTranslation();

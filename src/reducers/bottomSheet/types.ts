@@ -1,5 +1,6 @@
-import BottomSheet, {BottomSheetProps} from '@gorhom/bottom-sheet';
 import {RefObject} from 'react';
+
+import BottomSheet, {BottomSheetProps} from '@gorhom/bottom-sheet';
 
 export enum BottomSheetTypes {
   OPEN_BOTTOMSHEET = '@bottomSheet/OPEN_BOTTOMSHEET',

@@ -1,6 +1,7 @@
 import {Dispatch} from 'redux';
-import {ChartTypes, IChartOptions} from '../reducers/chart/types';
+
 import {ChartQuery} from '../generated/graphql';
+import {ChartTypes, IChartOptions} from '../reducers/chart/types';
 
 export const updateChartOptions =
   ({...options}: IChartOptions) =>

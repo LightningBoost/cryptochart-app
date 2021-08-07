@@ -1,6 +1,6 @@
 import React from 'react';
-import {ActivityIndicator as RNPActivity, useTheme} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
+import {ActivityIndicator as RNPActivity, useTheme} from 'react-native-paper';
 
 interface IProps {
   size?: 'small' | 'large' | number;

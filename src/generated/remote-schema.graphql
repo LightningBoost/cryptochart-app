@@ -37,9 +37,11 @@ type CandleStickValue {
 }
 
 type CombinedData {
-    barData: BarData
-    candleData: CandleStickData!
-    lineData: LineData
+    bollingerBands: LineData
+    candleData: CandleStickDataset!
+    ema: LineData
+    macd: LineData
+    volume: BarDataset
 }
 
 type LineData {
@@ -58,7 +60,7 @@ type LineValues {
 }
 
 type Query {
-    chart(ema: [Int!], exchange: Exchanges!, interval: Interval!, queryData: [ChartQuery!]!, symbol: String!): CombinedData!
+    chart(ema: [Int!], exchange: Exchanges!, interval: Interval!, macd: MACD, queryData: [ChartQuery!]!, symbol: String!): CombinedData!
     ticker24h(exchange: Exchanges!, symbol: String!): Ticker24h!
 }
 
@@ -83,6 +85,7 @@ enum ChartQuery {
     BOLLINGERBANDS
     CANDLESTICK
     EMA
+    MACD
     VOLUME
 }
 
@@ -103,4 +106,18 @@ enum Interval {
     m3
     m30
     m5
+}
+
+enum MACDSource {
+    close
+    high
+    low
+    open
+}
+
+input MACD {
+    fast: Int!
+    lag: Int!
+    slow: Int!
+    source: MACDSource!
 }

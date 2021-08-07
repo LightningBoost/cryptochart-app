@@ -1,12 +1,13 @@
 import React, {useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useDispatch} from 'react-redux';
 import {StyleSheet} from 'react-native';
 import {Paragraph, Switch} from 'react-native-paper';
-import {useTypedSelector} from '../../../hooks/useTypedSelector';
-import {ChartQuery} from '../../../generated/graphql';
-import FullWidthView from '../../View/fullWidth';
+import {useDispatch} from 'react-redux';
+
 import {addChart, removeChart} from '../../../actions/chartActions';
+import {ChartQuery} from '../../../generated/graphql';
+import {useTypedSelector} from '../../../hooks/useTypedSelector';
+import FullWidthView from '../../View/fullWidth';
 
 const Volume: React.FC = () => {
   const {t} = useTranslation();

@@ -1,15 +1,17 @@
 import React from 'react';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
+import MoonIcon from 'react-native-vector-icons/Entypo';
+import SunIcon from 'react-native-vector-icons/Feather';
+import {useDispatch} from 'react-redux';
+
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
-import MoonIcon from 'react-native-vector-icons/Entypo';
-import SunIcon from 'react-native-vector-icons/Feather';
-import {useDispatch} from 'react-redux';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
+
 import {setThemeMode} from '../../actions/themeActions';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
 import SafeAreaView from '../View/safeAreaView';
 
 MoonIcon.loadFont();

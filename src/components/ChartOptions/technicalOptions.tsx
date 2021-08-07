@@ -1,14 +1,16 @@
 import React from 'react';
-import {Paragraph} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
-import {TouchableOpacity} from '@gorhom/bottom-sheet';
+import {Paragraph} from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch} from 'react-redux';
-import FullWidthView from '../View/fullWidth';
+
+import {TouchableOpacity} from '@gorhom/bottom-sheet';
+
 import {addChart, removeChart} from '../../actions/chartActions';
 import {ChartQuery} from '../../generated/graphql';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import FullWidthView from '../View/fullWidth';
 
 MaterialIcons.loadFont();
 

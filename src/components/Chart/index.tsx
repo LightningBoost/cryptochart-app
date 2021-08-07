@@ -1,26 +1,28 @@
 import React, {useCallback, useMemo, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {
-  VictoryAxis,
-  VictoryChart,
-  VictoryLegend,
-  VictoryTheme,
-  VictoryZoomContainer,
-} from 'victory-native';
+import {useTheme} from 'react-native-paper';
+
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
-import {useTheme} from 'react-native-paper';
-
 import {
-  BarDataset,
-  CandleStickDataset,
-  CombinedData,
-} from '../../generated/graphql';
+  VictoryAxis,
+  VictoryChart,
+  VictoryTheme,
+  VictoryZoomContainer,
+} from 'victory-native';
+
+import intervalEnum from '../../domain/enum/intervalEnum';
+import {CandleStickDataset, CombinedData} from '../../generated/graphql';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {
+  filterBarData,
+  filterData,
+  filterLinesData,
+} from '../../utils/filterData';
 import CandleStickChart from './CandleStickChart';
-import {filterData, filterLinesData} from '../../utils/filterData';
-import LineChart from './LineChart';
-import BarChart from './BarChart';
+import EMAChart from './EMAChart';
+import VolumeChart from './VolumeChart';
 
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
@@ -31,37 +33,26 @@ interface IProps {
 
 const MAX_VALUES = 50;
 
-const generateBarChart = (data: CombinedData) => {
-  if (data.barData) {
-    return BarChart({data: data.barData.dataSets});
-  }
-  return null;
-};
-
-const generateLineChart = ({
+const generateCandleStickChart = ({
   data,
   maxima,
   minima,
 }: {
-  data: CombinedData;
+  data: CandleStickDataset;
   maxima: number;
   minima: number;
 }) => {
-  if (data.lineData) {
-    return LineChart({data: data.lineData.dataSets, maxima, minima});
-  }
-  return null;
+  return CandleStickChart({data, maxima, minima});
 };
 
 const Chart: React.FC<IProps> = ({data}) => {
   const theme = useTheme();
+  const {interval} = useTypedSelector((state) => state.chart);
 
   const initialDate = useMemo(() => {
     return dayjs(
       parseInt(
-        data.candleData.dataSets.values[
-          data.candleData.dataSets.values.length - MAX_VALUES
-        ].x,
+        data.candleData.values[data.candleData.values.length - MAX_VALUES].x,
         10,
       ),
     ).toDate();
@@ -69,12 +60,7 @@ const Chart: React.FC<IProps> = ({data}) => {
 
   const lastDate = useMemo(() => {
     return dayjs(
-      parseInt(
-        data.candleData.dataSets.values[
-          data.candleData.dataSets.values.length - 1
-        ].x,
-        10,
-      ),
+      parseInt(data.candleData.values[data.candleData.values.length - 1].x, 10),
     ).toDate();
   }, [data]);
 
@@ -82,55 +68,27 @@ const Chart: React.FC<IProps> = ({data}) => {
   const [xDomain, setXDomain] = useState([initialDate, lastDate]);
 
   const filteredData = useMemo(() => {
-    let filteredBarDataSets;
-    let filteredLineDataSets;
     const filteredCandleDataSets = filterData({
-      dataSet: data.candleData.dataSets,
+      dataSet: data.candleData,
       initialDate: dayjs(xDomain[0]),
       finalDate: dayjs(xDomain[1]),
     });
-    if (data.barData) {
-      filteredBarDataSets = filterData({
-        dataSet: data.barData.dataSets,
-        initialDate: dayjs(xDomain[0]),
-        finalDate: dayjs(xDomain[1]),
-      });
-    }
-    if (data.lineData) {
-      filteredLineDataSets = filterLinesData({
-        dataSet: data.lineData.dataSets,
-        initialDate: dayjs(xDomain[0]),
-        finalDate: dayjs(xDomain[1]),
-      });
-    }
 
     return {
       candleData: {
         dataSets: filteredCandleDataSets as CandleStickDataset,
       },
-      ...(data.barData && {
-        barData: {
-          dataSets: filteredBarDataSets as BarDataset,
-        },
-      }),
-      ...(data.lineData && {
-        lineData: {
-          dataSets: filteredLineDataSets,
-        },
-      }),
     };
-  }, [data, xDomain]);
+  }, [data.candleData, xDomain]);
 
   const entireDomain = useMemo(() => {
     return {
       y: [0, 1] as [number, number],
       x: [
-        dayjs(parseInt(data.candleData.dataSets.values[0].x, 10)).toDate(),
+        dayjs(parseInt(data.candleData.values[0].x, 10)).toDate(),
         dayjs(
           parseInt(
-            data.candleData.dataSets.values[
-              data.candleData.dataSets.values.length - 1
-            ].x,
+            data.candleData.values[data.candleData.values.length - 1].x,
             10,
           ),
         ).toDate(),
@@ -143,52 +101,33 @@ const Chart: React.FC<IProps> = ({data}) => {
       x: [
         dayjs(
           parseInt(
-            data.candleData.dataSets.values[
-              data.candleData.dataSets.values.length - MAX_VALUES
-            ].x,
+            data.candleData.values[data.candleData.values.length - MAX_VALUES]
+              .x,
             10,
           ),
         ).toDate(),
-        dayjs(lastDate).add(1, 'minute').toDate(),
+        dayjs(lastDate)
+          .add(intervalEnum(interval).time, intervalEnum(interval).period)
+          .toDate(),
       ] as [Date, Date],
     };
-  }, [data, lastDate]);
+  }, [data, lastDate, interval]);
 
   const formatXTick = useCallback((value: string) => {
     return dayjs(value).format(dayjs(value).hour() === 0 ? 'DD' : 'LT');
   }, []);
 
   const maxima = useMemo(() => {
-    const lineMaxima = filteredData.lineData?.dataSets
-      ? Math.max(
-          ...filteredData?.lineData?.dataSets?.map((dataSet) =>
-            Math.max(...dataSet.values.map((value) => value.y)),
-          ),
-        )
-      : undefined;
-
-    const candleMaxima = Math.max(
+    return Math.max(
       ...filteredData.candleData.dataSets.values.map((d) => d.high),
     );
-
-    return lineMaxima ? Math.max(candleMaxima, lineMaxima) : candleMaxima;
-  }, [filteredData.candleData.dataSets, filteredData.lineData]);
+  }, [filteredData.candleData.dataSets]);
 
   const minima = useMemo(() => {
-    const lineMinima = filteredData.lineData?.dataSets
-      ? Math.min(
-          ...filteredData?.lineData?.dataSets?.map((dataSet) =>
-            Math.min(...dataSet.values.map((value) => value.y)),
-          ),
-        )
-      : undefined;
-
-    const candleMinima = Math.min(
+    return Math.min(
       ...filteredData.candleData.dataSets.values.map((d) => d.low),
     );
-
-    return lineMinima ? Math.min(candleMinima, lineMinima) : candleMinima;
-  }, [filteredData.candleData.dataSets, filteredData.lineData]);
+  }, [filteredData.candleData.dataSets]);
 
   return (
     <View
@@ -218,28 +157,34 @@ const Chart: React.FC<IProps> = ({data}) => {
             }}
           />
         }>
-        {data.lineData && data.lineData?.dataSets.length > 0 && (
-          <VictoryLegend
-            orientation="horizontal"
-            y={dimensions.height * 0.96}
-            data={data.lineData?.dataSets.map((line) => ({
-              name: line.label,
-              symbol: {fill: line?.color || undefined},
-            }))}
-          />
-        )}
         <VictoryAxis
           gridComponent={<></>}
           tickFormat={formatXTick}
           style={{tickLabels: {fill: theme.colors.text}}}
         />
-        {generateLineChart({data, maxima, minima})}
-        {generateBarChart(data)}
-        {CandleStickChart({
+        {generateCandleStickChart({
           data: filteredData.candleData.dataSets,
           maxima,
           minima,
         })}
+        {data.volume &&
+          VolumeChart({
+            data: filterBarData({
+              dataSet: data.volume,
+              initialDate: dayjs(xDomain[0]),
+              finalDate: dayjs(xDomain[1]),
+            }),
+          })}
+        {data.ema &&
+          EMAChart({
+            data: filterLinesData({
+              dataSet: data.ema.dataSets,
+              initialDate: dayjs(xDomain[0]),
+              finalDate: dayjs(xDomain[1]),
+            }),
+            maxima,
+            minima,
+          })}
       </VictoryChart>
     </View>
   );

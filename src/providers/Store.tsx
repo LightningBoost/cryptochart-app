@@ -1,13 +1,14 @@
 import React from 'react';
-import {applyMiddleware, createStore} from 'redux';
-import {persistStore, persistReducer} from 'redux-persist';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import thunk from 'redux-thunk';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-
 import {Provider} from 'react-redux';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {applyMiddleware, createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {persistStore, persistReducer} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import thunk from 'redux-thunk';
+
 import rootReducers from '../reducers';
 
 const persistConfig = {

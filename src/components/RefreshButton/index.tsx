@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {TouchableOpacity, Animated, Easing} from 'react-native';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome';
 import {useTheme} from 'react-native-paper';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome';
 
 FontAwesome5Icon.loadFont();
 

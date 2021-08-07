@@ -1,15 +1,18 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
+import {Provider as PaperProvider} from 'react-native-paper';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import {Provider as PaperProvider} from 'react-native-paper';
-import {useTranslation} from 'react-i18next';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import ChartRoutes from './chart';
-import {CombinedDarkTheme, CombinedDefaultTheme} from '../style/theme';
-import {useTypedSelector} from '../hooks/useTypedSelector';
-import DrawerComponent from '../components/Drawer';
+
 import BottomSheet from '../components/BottomSheet';
+import DrawerComponent from '../components/Drawer';
+import {useTypedSelector} from '../hooks/useTypedSelector';
+import {CombinedDarkTheme, CombinedDefaultTheme} from '../style/theme';
+import ChartRoutes from './chart';
 import {DrawerParamList} from './interfaces';
+import RampRoutes from './ramp';
 
 MaterialCommunityIcons.loadFont();
 
@@ -34,6 +37,20 @@ const DefaultRoutes: React.FC = () => {
               drawerIcon: ({color, size}) => (
                 <MaterialCommunityIcons
                   name="chart-line"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="Ramp"
+            component={RampRoutes}
+            options={{
+              title: t('Buy/Sell'),
+              drawerIcon: ({color, size}) => (
+                <MaterialCommunityIcons
+                  name="bitcoin"
                   color={color}
                   size={size}
                 />

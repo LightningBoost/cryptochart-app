@@ -1,7 +1,9 @@
 import React from 'react';
-import {VictoryAxis, VictoryCandlestick} from 'victory-native';
-import dayjs from 'dayjs';
 import {useTheme} from 'react-native-paper';
+
+import dayjs from 'dayjs';
+import {VictoryAxis, VictoryCandlestick} from 'victory-native';
+
 import {CandleStickDataset} from '../../generated/graphql';
 import Currency from '../../utils/currencyjs';
 
@@ -20,7 +22,7 @@ const CandleStickChart = ({
 
   return [
     <VictoryCandlestick
-      key={data.label}
+      key={1}
       data={data.values}
       x={(datum) => dayjs(parseInt(datum.x, 10)).toDate()}
       open={(datum) => ((datum as any).open - minima) / (maxima - minima)}
@@ -30,7 +32,7 @@ const CandleStickChart = ({
       candleColors={{positive: 'green', negative: 'red'}}
     />,
     <VictoryAxis
-      key={data.label}
+      key={2}
       dependentAxis
       gridComponent={<></>}
       tickValues={[0.25, 0.5, 0.75, 1]}

@@ -1,8 +1,9 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import {useTheme} from 'react-native-paper';
 import RNPickerSelect, {Item} from 'react-native-picker-select';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {useTheme} from 'react-native-paper';
-import {StyleSheet} from 'react-native';
+
 import TextInput from '../TextInput';
 
 Entypo.loadFont();

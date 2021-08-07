@@ -1,18 +1,20 @@
 import React, {useCallback, useEffect, useMemo, useRef} from 'react';
-import BS from '@gorhom/bottom-sheet';
-import {useDispatch} from 'react-redux';
-import {useTheme} from 'react-native-paper';
 import {
   Animated,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {useTheme} from 'react-native-paper';
+import {useDispatch} from 'react-redux';
+
+import BS from '@gorhom/bottom-sheet';
+
 import {
   closeBottomSheet,
   mountBottomSheet,
 } from '../../actions/bottomSheetActions';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 interface IProps {
   active: boolean;
